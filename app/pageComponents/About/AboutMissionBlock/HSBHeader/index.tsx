@@ -8,7 +8,7 @@ const HSBHeader = () => {
                     <h2
                         className={`${styles.servicesHeadingOverlay} font-sharp`}
                     >
-                        Our Mission
+                        Notre mission
                     </h2>
                 </div>
                 <div className={
@@ -17,7 +17,7 @@ const HSBHeader = () => {
                     <h2
                         className={`${styles.servicesHeading} font-sharp`}
                     >
-                        Our Mission
+                        Notre mission
                     </h2>
                 </div>
             </div>

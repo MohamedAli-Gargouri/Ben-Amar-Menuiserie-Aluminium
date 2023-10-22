@@ -1,8 +1,10 @@
 /* Left Container */
+/*
 .leftContainer {
-  /* width: 100%; */
-  /* border: 2px solid red; */
+   width: 100%; 
+   border: 2px solid red; 
 }
+*/
 
 .insideLeftContainer {
   padding-left: 6rem;
@@ -18,9 +20,9 @@
 
 /* Heading */
 .heading {
+ font-style: normal;
   text-align: left;
   margin-top: 169px;
-  font-style: normal;
   color: #000000;
   font-weight: 500;
   font-size: 45px;

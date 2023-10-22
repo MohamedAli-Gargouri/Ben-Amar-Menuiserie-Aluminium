@@ -6,46 +6,33 @@ import Image from "next/image";
 import Slider from "react-slick";
 
 const HomeProductsList = () => {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   return (
     <div
       className={`w-full flex flex-col justify-center items-center text-[aliceblue] h-auto mt-14 ${styles.container}`}
     >
       <div className={styles.boxContainer}>
-        <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-3 gap-3 justify-center items-center">
           {imageList.map((item: imageListType, index: number) => (
-            <div key={index}>
-              <div className="relative">
                 <Image
+                  key={index}
                   src={item.imageUrl}
                   alt={`Image ${item.id}`}
-                  className={`w-[280px] h-auto sm:w-[25rem] lg:w-[20rem] xl:w-[20rem] 2xl:w-96 lg:h-auto ${styles.image}`}
+                  className={` col-span-1 ${styles.image}`}
                   title={`Image ${item.id}`}
                   width={372}
-                  height={486}
+                  height={372}
                 />
-                <div className="absolute top-[-10px] bottom-[10px] right-0 border-2 border-[#123e95] z-[-1px] w-[270px] h-[92%] pointer-events-none"></div>
-              </div>
-            </div>
           ))}
         </div>
       </div>
 
       <Button
-        variant="contained"
+        variant="outlined"
         color="primary"
-        className="font-[Sharp Grotesk] text-lg mt-16 font-normal leading-[77px] rounded-sm bg-[#123E95] hover:bg-[#0b46bb] hover:text-white w-40 h-[50px]"
-        onClick={() => {
-          console.log("Button clicked");
-        }}
+        className=" font-lato text-lg mt-16  leading-[77px] rounded-md  w-40 h-[50px]"
+        href="products"
       >
-        View All
+        Voir tout
       </Button>
     </div>
   );

@@ -44,7 +44,7 @@ const HSBBodyLeftSide = () => {
             <div>
               <Image
                 className={styles.ServicesImage}
-                src="/Images/Home/Services/Design.png"
+                src="/Images/About/Mission.jpg"
                 alt="Design Image"
                 width={489}
                 height={500}

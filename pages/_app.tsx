@@ -13,10 +13,17 @@ import GlobalCssPriority from "@/app/Components/GlobalCssPriority";
 
 import "../styles/globals.css";
 
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '../Theme';
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <GlobalCssPriority>
-      <Component {...pageProps} />
+  <GlobalCssPriority>
+    <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Component {...pageProps} />
+  </ThemeProvider>
     </GlobalCssPriority>
   );
 };

@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  height: fit-content;
   padding-left: 6rem;
   padding-right: 6rem;
 }
@@ -24,7 +25,7 @@
   .container {
     padding-left: 2.6rem;
     padding-right: 2.6rem;
-    border: 2px solid green;
+    
   }
 }
 

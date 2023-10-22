@@ -1,8 +1,16 @@
+
+.image {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+   border: 1px solid #558B2F; 
+   border-radius: 30px;
+}
+
 @media all and (max-width: 650px) {
   .image {
-    width: 25rem;
-    height: 100%;
-    /* border: 3px solid green; */
+    width: 100%;
+    height: 200px;
+    border-radius: 30px;
+    border: 1px solid #558B2F; 
   }
 }
 
@@ -10,17 +18,15 @@
   .container {
     margin-top: 0px;
   }
-  .image {
-    width: 320px;
-    height: 100%;
-    /* border: 3px solid green; */
-  }
+
 }
 
 @media all and (max-width: 440px) {
   .image {
-    width: 170px;
-    height: 200px;
-    /* border: 3px solid green; */
+    width: 100%;
+    border-radius: 0px;
+    border: 1px solid #558B2F;
+    
   }
 }
+

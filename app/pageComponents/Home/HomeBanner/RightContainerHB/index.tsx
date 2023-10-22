@@ -45,9 +45,9 @@ const RightContainerHB = () => {
             width={822.07}
             height={638.66}
             loading="eager"
-            title="Alum Tec"
+            title="Ben Amar Menuiserie Aluminium"
           />
-          <div className={styles.frameImageMobile} title="Alum Tec" />
+          <div className={styles.frameImageMobile} title="Ben Amar Menuiserie Aluminium" />
         </div>
         <div className={`${styles.box} ${styles.overlay}`}>
           <div className={styles.sliderOuterContainer}>

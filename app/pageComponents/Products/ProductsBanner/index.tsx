@@ -1,15 +1,14 @@
 const ProductsBanner = () => {
   return (
-    <div className="bg-[url('/Images/Products/banner.jxr')] h-[70vh] mt-[105px] w-full bg-cover bg-no-repeat bg-center">
-      <div className="relative h-[69vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <h1 className="absolute top-0 left-0 right-0 bottom-0 mt-[20vh] text-5xl font-semibold font-sharp text-center text-white uppercase">
-          Our Products
+    <div className="bg-[url('/Images/Products/banner.webp')] h-[50vh] mt-[105px] w-full bg-cover bg-no-repeat bg-center">
+      <div className="relative flex justify-center items-center flex-col h-[50vh] w-full backdrop-filter backdrop-blur-0 ease-linear transition">
+        <div className="absolute z-10 inset-0 bg-black opacity-50"></div>
+        <h1 className="relative  z-50 text-5xl font-semibold font-sharp text-center text-white uppercase">
+        Nos produits
         </h1>
-        <p className="absolute top-0 left-0 right-0 bottom-0 mt-[35vh] w-9/12 text-lg text-center text-white ml-auto mr-auto">
-          AlumTec Glass and Aluminium offers a wide range of aluminium products
-          and services. All our products comply with Dubai Green Building
-          Regulations, Dubai Civil Defense and Abu Dhabi Estidama Regulations.
+        <p className="relative z-50  font-lato text-lg text-center text-white ml-auto mr-auto">
+        
+Explorez notre étendue de services, incluant volets roulants, portes extérieures, pergolas, façades vitrées, Alucobond, cabines de douche, murs rideaux, fenêtres, portes, menuiseries coulissantes, et menuiseries en aluminium battantes.
         </p>
       </div>
     </div>

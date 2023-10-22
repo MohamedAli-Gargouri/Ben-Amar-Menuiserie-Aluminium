@@ -1,30 +1,29 @@
 import Button from "@mui/material/Button";
 
 import styles from "./style.module.css";
-
+import Certificate from "@/public/Images/Home/Banner/Certification.webp"
+import Image from "next/image";
 const LeftContainerHB = () => {
     return (
         <div className={styles.leftContainer}>
             <div className={styles.insideLeftContainer}>
                 <div className={styles.dash_line}></div>
-                <h3
+                <h4
                     className={styles.heading}
                 >
-                    Aluminium curtain wall,
-                    windows and doors are our
-                    speciality.
-                </h3>
+                    Libérer l’excellence dans les systèmes de murs-rideaux, les fenêtres et les portes en aluminium.
+                </h4>
                 <h3
                     className={styles.subHeading}
                 >
-                    Glazing solutions are our passion.
+                   Nous sommes des artisans diplômés, dévoués à l'excellence dans notre métier
                 </h3>
-                <Button
-                    className={styles.readMoreButton}
-                >
-                    Read more
-                </Button>
+                
+                
             </div>
+            <div className="hidden md:flex w-full h-full  justify-center items-center">
+                <Image width={300} height={300} className=" aspect-square" src={Certificate} alt={"SCHUCO Certification"}/>
+                </div>
         </div>
     )
 }

@@ -1,8 +1,7 @@
+import Footer from "@/app/Components/Footer";
 import Navbar from "@/app/Components/Navbar";
 import AboutBanner from "@/app/pageComponents/About/AboutBanner";
 import AboutMissionBlock from "@/app/pageComponents/About/AboutMissionBlock";
-import AboutStoryBlock from "@/app/pageComponents/About/AboutStoryBlock";
-
 const AboutPage = () => {
   return (
     <>
@@ -11,8 +10,9 @@ const AboutPage = () => {
       <section>
         <AboutBanner />
         <AboutMissionBlock />
-        {/* <AboutStoryBlock /> */}
+
       </section>
+      <Footer/>
     </>
   );
 };

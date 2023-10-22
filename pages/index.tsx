@@ -35,21 +35,8 @@ const Home = () => {
         <HomeBanner />
         <HomeServicesBlock />
         <HomeProjectsBlock />
-
-        <div
-          className={`mt-[72rem] sm:mt-[70rem] lg:mt-auto ${styles.projectsBottomMargin}`}
-        ></div>
-
-        {/* <HomeBlogsBlock /> */}
-        {/* <HomeTestimonialsBlock /> */}
-        {/* <GetInTouchContactForm /> */}
-        <br />
-        <br />
       </section>
-
-      <div style={{ marginTop: 560, position: "relative" }}>
         <Footer />
-      </div>
     </div>
   );
 };

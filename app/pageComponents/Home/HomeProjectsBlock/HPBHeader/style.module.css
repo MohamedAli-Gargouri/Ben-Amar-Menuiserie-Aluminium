@@ -1,8 +1,35 @@
+.header
+{
+  background-color: rgba(85,139,	47, 0.84);
+  margin-top: 10px;
+  margin-left: 6rem;
+  margin-right: 6rem;
+  margin-bottom: 6rem ;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-image: url(../../../../../public/Images/Home/Products/Patterns.png);
+}
+
+
+
+@media (max-width: 1350px)
+{
+.header {
+    margin-left: 6rem;
+    margin-right: 3rem;
+
+}
+}
 @media all and (max-width: 970px) {
   .paragraph {
     padding-left: 5rem;
     padding-right: 5rem;
   }
+  .header {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+}
 }
 
 @media all and (max-width: 600px) {
@@ -14,6 +41,10 @@
     padding-left: 5rem;
     padding-right: 5rem;
   }
+  .header {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
 }
 
 @media all and (max-width: 550px) {
@@ -41,9 +72,13 @@
     margin-top: 10px;
   }
   .paragraph {
-    font-size: 9px;
+    font-size: 15px;
     line-height: 22px;
     font-weight: 400;
     margin-top: 0px;
   }
+  .header {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 }

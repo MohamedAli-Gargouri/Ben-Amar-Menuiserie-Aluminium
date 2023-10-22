@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import Logo from "@/public/Images/logo/Logo.webp"
 import {
   Box,
   CssBaseline,
@@ -14,16 +16,17 @@ import { useRouter } from "next/router";
 import { DesktopNavbar } from "./methods";
 import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
-
+import Image from "next/image";
 const drawerWidth = 240;
 
 const navItems = [
-  { name: "Home", link: "/" },
-  { name: "About Us", link: "/about" },
-  { name: "Our Products", link: "/products" },
-  { name: "Contact us", link: "/contact" },
+  { name: "Présentation", link: "/" },
+  { name: "Nos Produits", link: "/products" },
+  { name: "À Propos", link: "/about" },
+  { name: "Contact", link: "/contact" },
 ];
 
+//This is the Mobile Side Navbar
 const MobileNavbar = ({
   navItems,
   router,
@@ -32,10 +35,12 @@ const MobileNavbar = ({
 }: DesktopNavbarProps) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        ALUM TEC
-      </Typography>
+      <div className="flex justify-center items-center flex-col">
+      <Image className="" height={100} src={Logo} alt={"Ben Amar Menuiserie Aluminium"} />
+      </div>
+      
       <Divider />
+      <FontAwesomeIcon className="mt-4" icon={faHome} />
       <List>
         {navItems.map((item, index) => (
           <ListItemButton

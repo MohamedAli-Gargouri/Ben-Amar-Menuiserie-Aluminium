@@ -1,134 +1,64 @@
-.servicesHeadingContainer {
-  box-sizing: border-box;
-  /* border: 10px solid red; */
-  height: 144px;
-  margin-top: 42px;
+.header
+{
+  background-color: rgba(85,139,	47, 0.84);
+  margin-top: 10px;
+  margin-bottom: 6rem ;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-image: url(../../../../../public/Images/Home/Products/Patterns.png);
 }
 
-/* Slider Styles */
-.sliderOuterContainer {
-  width: 100%;
-  height: auto;
-  position: relative;
-}
 
-.box {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 1;
-}
 
-.overlay {
-  z-index: 9;
-}
 
-/* Services Styles */
-.servicesHeadingOverlay {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 112px;
-  font-family: "Sharp Grotesk-Medium20", Helvetica;
-  line-height: 77px;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.02),
-      rgba(0, 0, 0, 0.02)
-    ),
-    linear-gradient(0deg, #ffffff, #ffffff);
-  background-size: 100%;
-  background-repeat: repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-  top: 10px;
-  user-select: none;
-}
-
-.servicesHeading {
-  margin-left: 50px;
-  margin-top: 40px;
-  text-align: left;
-  color: #000;
-  padding-bottom: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 59px;
-  font-family: "Sharp Grotesk-Medium20", Helvetica;
-  line-height: 77px;
-  background-image: linear-gradient(0deg, #000000, #000000),
-    linear-gradient(0deg, #ffffff, #ffffff);
-  background-size: 100%;
-  background-repeat: repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-}
-
-@media all and (max-width: 899px) {
-  .servicesHeading {
-    position: relative;
-    margin-left: 0px;
-    margin-top: 0px;
-    padding-top: 0px;
-    margin-bottom: 0px;
-    text-align: center;
-    min-height: 80px;
-    height: 80px;
-    color: #000;
-    z-index: 10;
+@media all and (max-width: 970px) {
+  .paragraph {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
-  .servicesHeadingContainer {
-    width: 100%;
-    height: fit-content;
-    padding-bottom: 0px;
-    position: relative;
-  }
-  .overlay,
-  .box {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  .servicesHeadingOverlay {
-    display: none;
-  }
-}
 
-@media all and (max-width: 768px) {
-  .servicesHeading {
-    font-size: 50px;
-    height: 60px;
-  }
 }
 
 @media all and (max-width: 600px) {
-  .servicesHeading {
-    font-size: 45px;
-    height: 50px;
+  .heading {
+    font-size: 50px;
+  }
+
+  .paragraph {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .heading {
+    font-size: 42px;
+  }
+  .paragraph {
+    font-size: 16px;
+    margin-top: 0.5rem;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .paragraph {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
 @media all and (max-width: 440px) {
-  .servicesHeadingContainer {
-    margin-top: initial;
-    margin-bottom: 0px;
+  .heading {
+    font-size: 32px;
+    line-height: 50px;
+    font-weight: bold;
+    margin-top: 10px;
   }
-  .servicesHeading {
-    font-size: 30px;
-    height: auto;
-    min-height: 30px;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-top: 36px;
-    line-height: 30px;
-    /* border: 2px solid rgb(85, 215, 25); */
-    padding-bottom: 0px;
+  .paragraph {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    margin-top: 0px;
   }
+
 }

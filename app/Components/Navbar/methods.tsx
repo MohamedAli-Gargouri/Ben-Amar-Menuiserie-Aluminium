@@ -2,6 +2,7 @@ import CallIcon from "@mui/icons-material/Call";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import Router from "next/router";
+import Logo from "@/public/Images/logo/Logo.webp"
 import {
   DesktopNavbarProps,
   NavItemContainerProps,
@@ -28,25 +29,10 @@ export const NavItemContainer = ({
           className={`${styles.navItem} no-underline hover:no-underline`}
           onClick={() => menuClick(item.link)}
         >
-          {item.name === "Call us" ? (
-            <div className="flex">
-              <div className="uppercase hover-underline-animation">
-                {item.name}
-              </div>
-              <CallIcon
-                sx={{
-                  fontSize: 30,
-                  marginLeft: "5px",
-                  color: "#10146F",
-                  marginTop: "-3px",
-                }}
-              />
-            </div>
-          ) : (
-            <div className="uppercase hover-underline-animation">
+            <div className="uppercase  text-lg hover-underline-animation font-lato">
               {item.name}
             </div>
-          )}
+          
         </Link>
       ))}
     </div>
@@ -68,33 +54,23 @@ export const DesktopNavbar = ({
       <Toolbar className={styles.insideContainer}>
         <div className={styles.logoContainer}>
           <Image
-            className={styles.logo}
-            src="/Images/Navbar/logo.jxr"
-            alt="ALUM TEC"
-            width={200}
-            height={68}
+          className={styles.logo}
+            src={Logo}
+            alt="Ben Amar Menuiserie Aluminium"
             loading="lazy"
-            title="ALUM TEC"
+            title="SBAA"
           />
         </div>
 
         <NavItemContainer navItems={navItems} router={router} />
 
         <IconButton
-          color="inherit"
+          color="primary"
           aria-label="open drawer"
           edge="start"
           className={styles.menuButton}
           onClick={handleDrawerToggle}
         >
-          <Image
-            className={styles.phone_logo}
-            src="/Images/Navbar/phone_logo.jxr"
-            alt="phone"
-            title="phone"
-            width={17}
-            height={20}
-          />
           <div>
             <MenuIcon className={styles.menuButtonIcon} />
           </div>
