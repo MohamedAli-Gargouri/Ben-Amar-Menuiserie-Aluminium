@@ -65,7 +65,7 @@ const ContactForm = () => {
   }, []);
 
   return (
-    <div className="w-full rounded-lg bg-white shadow-md pl-20 pr-20 pt-12">
+    <div className="w-full text-center rounded-lg bg-white shadow-md pt-12">
       <Grid
         container
         spacing={
@@ -89,9 +89,9 @@ const ContactForm = () => {
         >
           <TextField
             id="name"
-            label={"Your name*"}
-            placeholder={"Please Enter your name"}
-            variant="standard"
+            label={"Votre nom"}
+            placeholder={"S'il vous plaît entrez votre nom"}
+            variant="outlined"
             helperText={firstNameError ? "Please fill out the Name field" : ""}
             error={firstNameError}
             margin="normal"
@@ -116,10 +116,10 @@ const ContactForm = () => {
         >
           <TextField
             id="email"
-            label={"Contact email *"}
-            placeholder={"you@emailid.com"}
-            variant="standard"
-            helperText={lastNameError ? "Please fill out the Email field" : ""}
+            label={"Email du contact"}
+            placeholder={"votre@emailid.com"}
+            variant="outlined"
+            helperText={lastNameError ? "Veuillez remplir le champ Email" : ""}
             error={lastNameError}
             margin="normal"
             fullWidth
@@ -143,10 +143,10 @@ const ContactForm = () => {
         >
           <TextField
             id="companyName"
-            label={"Company name**"}
-            placeholder={"Enter your company name"}
-            variant="standard"
-            helperText={firstNameError ? "Please Enter your company name" : ""}
+            label={"Nom de l'entreprise"}
+            placeholder={"Entrez le nom de votre entreprise"}
+            variant="outlined"
+            helperText={firstNameError ? "Veuillez entrer le nom de votre entreprise" : ""}
             error={firstNameError}
             margin="normal"
             value={firstName}
@@ -183,11 +183,11 @@ const ContactForm = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={"Country"}
-                variant="standard"
-                placeholder="Select Country ..."
+                label={"Pays"}
+                variant="outlined"
+                placeholder="Choisissez le pays ..."
                 helperText={
-                  countryIdError ? "* Please select any Country." : ""
+                  countryIdError ? "Veuillez sélectionner n'importe quel pays." : ""
                 }
                 error={countryIdError}
               />
@@ -199,16 +199,16 @@ const ContactForm = () => {
         <Grid item xs={12}>
           <TextField
             id="message"
-            label={"Your message *"}
-            placeholder={"Type your message…."}
-            variant="standard"
+            label={"Votre message"}
+            placeholder={"Tapez votre message…."}
+            variant="outlined"
             helperText={
-              firstNameError ? "Please fill out the Message field" : ""
+              firstNameError ? "Veuillez remplir le champ Message" : ""
             }
             error={firstNameError}
             margin="normal"
             rows={5}
-            className="mt-0"
+            className="mt-4"
             multiline
             value={firstName}
             onChange={(e) => {
@@ -222,18 +222,12 @@ const ContactForm = () => {
         </Grid>
       </Grid>
 
-      <p className="mt-[16px] text-[##757575] text-[15px] leading-7">
-        By submitting this form you agree to our terms and conditions and our
-        Privacy Policy which explains how we may collect, use and disclose your
-        personal information including to third parties.
-      </p>
-
       <Button
         variant="contained"
         color="primary"
-        className="mt-8 mb-8 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[16px]"
+        className="mt-8 mb-8 mx-auto hover:bg-[#558b2fa0]  font-[lato] uppercase text-[16px]"
       >
-        Contact sales
+        Contacter le service commercial
       </Button>
     </div>
   );

@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  display: flex;
+  display: grid;
   flex-direction: row;
   height: auto;
 }

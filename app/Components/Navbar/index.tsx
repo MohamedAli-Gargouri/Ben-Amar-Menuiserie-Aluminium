@@ -17,6 +17,7 @@ import { DesktopNavbar } from "./methods";
 import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
 import Image from "next/image";
+import Link from "next/link";
 const drawerWidth = 240;
 
 const navItems = [
@@ -35,12 +36,12 @@ const MobileNavbar = ({
 }: DesktopNavbarProps) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <div className="flex justify-center items-center flex-col">
+      {/*<div className="flex justify-center items-center flex-col">
       <Image className="" height={100} src={Logo} alt={"Ben Amar Menuiserie Aluminium"} />
       </div>
-      
+  */}<FontAwesomeIcon className="mt-4 mb-4" icon={faHome} />
       <Divider />
-      <FontAwesomeIcon className="mt-4" icon={faHome} />
+      
       <List>
         {navItems.map((item, index) => (
           <ListItemButton
@@ -48,7 +49,7 @@ const MobileNavbar = ({
             onClick={() => console.log(item)}
             sx={{ textAlign: "center" }}
           >
-            <ListItemText primary={item.name} />
+            <ListItemText primary={<Link key={index} className=" text-[#558B2F] no-underline block" href={item.link}>{item.name}</Link>} />
           </ListItemButton>
         ))}
       </List>

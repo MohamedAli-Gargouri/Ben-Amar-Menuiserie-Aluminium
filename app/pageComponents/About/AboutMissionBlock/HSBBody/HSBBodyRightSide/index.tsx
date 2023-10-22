@@ -9,9 +9,7 @@ import HSBHeader from "../../HSBHeader";
 const HSBBodyRightSide = () => {
   return (
     <div className={styles.servicesCardContainer}>
-      <div className={styles.mobileControls}>
-        <HSBBodyRSControls />
-      </div>
+
       <div className="mt-0">
         <HSBHeader />
       </div>

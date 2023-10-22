@@ -1,22 +1,16 @@
 export const contact_data_list = [
   {
-    title: "Email us",
+    title: "Envoyez-nous un email",
     description:
-      "Email us for general queries, including marketing and partnership opportunities.",
-    contact: "hello@motulsoftware.com",
+      "Envoyez-nous un e-mail pour des questions générales, y compris des opportunités de marketing et de partenariat.",
+    contact: "tunisalu@gmail.com",
     icon: "/Images/Contact/Icons/email.jxr",
   },
   {
-    title: "Call us",
+    title: "Appelez-nous",
     description:
-      "Call us to speak to a member of our team. We are always happy to help.",
-    contact: "+0 (123) 456-7891",
+      "Appelez-nous pour parler à un membre de notre équipe. Nous sommes toujours heureux d'aider.",
+    contact: "(+216) 52 587 505",
     icon: "/Images/Contact/Icons/phone.jxr",
-  },
-  {
-    title: "Support",
-    description: "Check out helpful resources, FAQs and developer tools.",
-    contact: "Support Center",
-    icon: "/Images/Contact/Icons/support.jxr",
-  },
+  }
 ];

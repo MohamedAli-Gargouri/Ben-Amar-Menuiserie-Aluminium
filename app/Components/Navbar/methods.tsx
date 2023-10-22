@@ -53,6 +53,7 @@ export const DesktopNavbar = ({
     >
       <Toolbar className={styles.insideContainer}>
         <div className={styles.logoContainer}>
+          
           <Image
           className={styles.logo}
             src={Logo}

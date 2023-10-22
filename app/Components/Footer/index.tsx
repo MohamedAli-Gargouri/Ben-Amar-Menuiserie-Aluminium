@@ -33,37 +33,41 @@ export const Footer: FC = (): ReactElement => {
         </div>
         <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
-            Company
+          Entreprise
           </h2>
-          {["About Us", "Services", "Projects"].map((v, i) => {
+          {[ {label:"PRÉSENTATION",url:"/"},
+          {label:"NOS PRODUITS",url:"/products"},
+          {label:"À PROPOS",url:"/about"}].map((v, i) => {
             return (
-              <p
+              <Link
+              href={v.url}
                 key={i}
-                className="text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
+                className=" no-underline block text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
               >
-                {v}
-              </p>
+                {v.label}
+              </Link>
             );
           })}
         </div>
         <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
-            Support
+          Soutien
           </h2>
-          {["Contact Us"].map((v, i) => {
+          {[{label:"Contact Us",url:"/contact"}].map((v, i) => {
             return (
-              <p
+              <Link
+                href={v.url}
                 key={i}
-                className="text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
+                className=" block no-underline text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
               >
-                {v}
-              </p>
+                {v.label}
+              </Link>
             );
           })}
         </div>
         <div className="m-0">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide mt-2">
-            Follow us
+          Suivez-nous
           </h2>
           <div className="flex flex-row">
             {[
@@ -75,14 +79,14 @@ export const Footer: FC = (): ReactElement => {
                     sx={{ color: "#4267B2", fontSize: "35px" }}
                   />
                 ),
-              },
+              }/*,
               {
                 name:"INSTA",
                 url:"",
                 icon: (
                   <YouTubeIcon sx={{ color: "#CD201F", fontSize: "35px" }} />
                 ),
-              },
+              },*/
               
             ].map((v, i) => {
               return (
