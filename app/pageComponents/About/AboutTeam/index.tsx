@@ -6,19 +6,20 @@ import Image from "next/image";
 
 // Importing components
 import HSBBody from "./HSBBody";
-
+import HSBHeader from "./HSBHeader"
 // Importing styles
 import styles from "./style.module.css";
-import GetInTouchContactForm from "@/app/Components/GetInTouchContactForm";
 
-const AboutStoryBlock = () => {
+const AboutMissionBlock = () => {
   return (
     <div className={styles.container}>
       <section>
+
+        <HSBHeader />
+
         <HSBBody />
-        <GetInTouchContactForm />
       </section>
     </div>
   );
 };
-export default AboutStoryBlock;
+export default AboutMissionBlock;

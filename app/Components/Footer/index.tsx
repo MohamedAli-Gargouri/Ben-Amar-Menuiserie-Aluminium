@@ -7,6 +7,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Logo from "@/public/Images/logo/Logo.webp"
+import Link from "next/link";
 export const Footer: FC = (): ReactElement => {
   return (
     <div className="w-full  px-[1.5rem]">
@@ -27,9 +28,7 @@ export const Footer: FC = (): ReactElement => {
           Ben Amar Menuiserie Aluminium
           </p>
           <div className="text-black font-poppins text-[14px] font-normal tracking-wider">
-            Address: 104-3300 Hwy 7, <br />
-            Suit#348 <br />
-            Concord ON. L4K 0G2
+          Route Gremda Km 7 entre sales de fêtes Kammoun et Said, 3041 Sfax
           </div>
         </div>
         <div className="m-0">
@@ -51,7 +50,7 @@ export const Footer: FC = (): ReactElement => {
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
             Support
           </h2>
-          {["Contact Us", "Privacy Policy"].map((v, i) => {
+          {["Contact Us"].map((v, i) => {
             return (
               <p
                 key={i}
@@ -69,6 +68,8 @@ export const Footer: FC = (): ReactElement => {
           <div className="flex flex-row">
             {[
               {
+                name:"FB",
+                url:"https://www.facebook.com/p/Menuiserie-Aluminium-Ben-Amar-100064915872562/",
                 icon: (
                   <FacebookSharpIcon
                     sx={{ color: "#4267B2", fontSize: "35px" }}
@@ -76,6 +77,8 @@ export const Footer: FC = (): ReactElement => {
                 ),
               },
               {
+                name:"INSTA",
+                url:"",
                 icon: (
                   <YouTubeIcon sx={{ color: "#CD201F", fontSize: "35px" }} />
                 ),
@@ -83,12 +86,13 @@ export const Footer: FC = (): ReactElement => {
               
             ].map((v, i) => {
               return (
-                <p
+
+                  <a
                   key={i}
-                  className="text-black font-poppins text-[14px] font-normal tracking-wider hover:underline cursor-pointer mr-3 mt-0"
-                >
+                  href={v.url}
+                  className="text-black font-poppins text-[14px] font-normal tracking-wider hover:underline cursor-pointer mr-3 mt-0">
                   {v.icon}
-                </p>
+                  </a>
               );
             })}
           </div>
