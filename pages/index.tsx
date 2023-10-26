@@ -14,20 +14,20 @@ import Head from "next/head";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Head>
-        <title>Home | AlumTec, Glazing solutions are our passion</title>
+        <title>Presentation | Ben Amar Menuiserie Aluminium</title>
         <meta
           name="description"
           content="AlumTec, Glazing solutions are our passion"
         />
         <meta
           name="keywords"
-          content="AlumTec, Glazing solutions, Aluminium curtain wall, windows and doors, Glass and Aluminium, Dubai Green Building Regulations, Dubai Civil Defense, Abu Dhabi Estidama Regulations, Canada, Dubai, UAE, United Arab Emirates, AlumTec, Glazing solutions are our passion"
+          content="Ben Amar Menuiserie Aluminium,Fenêtres aluminium,Portes aluminium,Portes et fenêtres Coulissante,Portes et fenêtres Battante,Volet Roulant,Facade Vitré,Facade Alucobond,Cabine Douche,Mur rideau,Pergola aluminium,Tables aluminium,Chaises aluminium,Canapé aluminium"
         />
-        <meta name="author" content="Muhammad-Bilal-7896" />
+        <meta name="author" content="Mohamed Gargouri" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Navbar />
 
@@ -37,7 +37,7 @@ const Home = () => {
         <HomeProjectsBlock />
       </section>
         <Footer />
-    </div>
+    </>
   );
 };
 export default Home;

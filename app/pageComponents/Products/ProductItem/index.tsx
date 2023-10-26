@@ -83,7 +83,7 @@ const ProductItem = ({
             return (
               <motion.li
                 className={`${styles.description} ml-[-5px] mb-2 font-lato`}
-                key={index}
+                key={"DESCRIPTION"+index}
                 variants={staggeredListVariants}
                 custom={index}
                 initial="hidden"

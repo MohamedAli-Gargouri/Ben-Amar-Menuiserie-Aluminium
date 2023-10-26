@@ -4,10 +4,24 @@ import { contact_data_list } from "@/app/data/Contacts";
 import ContactForm from "@/app/pageComponents/Contact/ContactForm";
 import ContactUsBanner from "@/app/pageComponents/Contact/ContactUsBanner";
 import Image from "next/image";
-
+import Head from "next/head";
 const ContactUsPage = () => {
   return (
-    <div>
+    <>
+              <Head>
+        <title>Contact | Ben Amar Menuiserie Aluminium</title>
+        <meta
+          name="description"
+          content="AlumTec, Glazing solutions are our passion"
+        />
+        <meta
+          name="keywords"
+          content="Ben Amar Menuiserie Aluminium,Fenêtres aluminium,Portes aluminium,Portes et fenêtres Coulissante,Portes et fenêtres Battante,Volet Roulant,Facade Vitré,Facade Alucobond,Cabine Douche,Mur rideau,Pergola aluminium,Tables aluminium,Chaises aluminium,Canapé aluminium"
+        />
+        <meta name="author" content="Mohamed Gargouri" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
       <Navbar />
 
       <section
@@ -22,7 +36,7 @@ const ContactUsPage = () => {
                 <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 mt-2">
                   {contact_data_list.map((item, index) => {
                     return (
-                      <div key={index} className=" col-span-1 block cursor-pointer overflow-hidden  h-96">
+                      <div key={"CONTACT"+index} className=" col-span-1 block cursor-pointer overflow-hidden  h-96">
                         <div className="flex flex-col h-full justify-center items-center border rounded-lg shadow-md bg-gray-50 hover:bg-[#558b2f34] ">
                           <div className="bg-[#558B2F] rounded-md w-16 h-16 p-[10px]">
                             <Image
@@ -67,7 +81,7 @@ const ContactUsPage = () => {
         </div>
       </section>
         <Footer />
-    </div>
+    </>
   );
 };
 export default ContactUsPage;

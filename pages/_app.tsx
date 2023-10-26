@@ -12,16 +12,17 @@ import "slick-carousel/slick/slick-theme.css";
 import GlobalCssPriority from "@/app/Components/GlobalCssPriority";
 
 import "../styles/globals.css";
-
+import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../Theme';
-
+import { ToastContainer } from 'react-toastify';
 const App = ({ Component, pageProps }: AppProps) => {
   return (
   <GlobalCssPriority>
     <ThemeProvider theme={theme}>
     <CssBaseline />
+    <ToastContainer />
     <Component {...pageProps} />
   </ThemeProvider>
     </GlobalCssPriority>

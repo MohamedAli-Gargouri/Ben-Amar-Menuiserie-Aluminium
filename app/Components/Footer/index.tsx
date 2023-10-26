@@ -35,13 +35,13 @@ export const Footer: FC = (): ReactElement => {
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
           Entreprise
           </h2>
-          {[ {label:"PRÉSENTATION",url:"/"},
-          {label:"NOS PRODUITS",url:"/products"},
-          {label:"À PROPOS",url:"/about"}].map((v, i) => {
+          {[ {label:"Présentation",url:"/"},
+          {label:"Nos Produits",url:"/products"},
+          {label:"À Propos",url:"/about"}].map((v, i) => {
             return (
               <Link
               href={v.url}
-                key={i}
+                key={"SUBNAVMENU3"+i}
                 className=" no-underline block text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
               >
                 {v.label}
@@ -57,7 +57,7 @@ export const Footer: FC = (): ReactElement => {
             return (
               <Link
                 href={v.url}
-                key={i}
+                key={"SUBNAVMENU2"+i}
                 className=" block no-underline text-black font-poppins text-[14px] font-normal tracking-wider mt-3 hover:underline cursor-pointer"
               >
                 {v.label}
@@ -92,7 +92,7 @@ export const Footer: FC = (): ReactElement => {
               return (
 
                   <a
-                  key={i}
+                  key={"MEDIA"+i}
                   href={v.url}
                   className="text-black font-poppins text-[14px] font-normal tracking-wider hover:underline cursor-pointer mr-3 mt-0">
                   {v.icon}

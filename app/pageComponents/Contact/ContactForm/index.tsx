@@ -1,9 +1,21 @@
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import {countries_data_list} from "@/app/data/Contacts/countries"
+import emailjs from 'emailjs-com';
+import { toast, ToastOptions } from 'react-toastify';
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
-
+  const toastOptions:ToastOptions = {
+    position:"bottom-center",
+    autoClose:5000,
+    hideProgressBar:false,
+    closeOnClick:true,
+    rtl:false,
+    pauseOnFocusLoss:true,
+    draggable:true,
+    pauseOnHover:true,
+    theme:"light"
+  };
   useEffect(() => {
     // Function to update window size
     function updateWindowSize() {
@@ -21,28 +33,22 @@ const ContactForm = () => {
       window.removeEventListener("resize", updateWindowSize);
     };
   }, []);
-
-  // First Name
-  const [firstName, setFirstName] = useState("");
-
-  // First Name Error
-  const [firstNameError, setFirstNameError] = useState(false);
-
-  // Last Name
-  const [lastName, setLastName] = useState("");
-
-  // Last Name Error
-  const [lastNameError, setLastNameError] = useState(false);
-
+  interface Country {
+    countryId: string;
+    countryName: string;
+  }
+  const NameRef=useRef<HTMLInputElement | null>(null)
+  const emailRef=useRef<HTMLInputElement | null>(null)
+  const companyNameRef=useRef<HTMLInputElement | null>(null)
+  const messageRef=useRef<HTMLInputElement | null>(null)
   // Country Id
-  const [countryId, setCountryId] = useState<any>(null);
+  const [countryId, setCountryId] = useState<any>({countryId: 'TN', countryName: 'Tunisia'});
 
   // Country Id Error
   const [countryIdError, setCountryIdError] = useState(false);
 
   // For Country autocomplete component
-  const [countryList, setCountryList] = useState<any>([]);
-
+  const [countryList, setCountryList] = useState<Country[]>([]);
   // For autocomplete component
   const countryDefaultProps = {
     options: countryList,
@@ -54,10 +60,6 @@ const ContactForm = () => {
 
   useEffect(() => {
     // Fetch Country List
-    interface Country {
-      countryId: string;
-      countryName: string;
-    }
     let countryList:Country[] = [];
 
     countries_data_list.map((country)=>{
@@ -65,6 +67,60 @@ const ContactForm = () => {
     })
     setCountryList(countryList);
   }, []);
+  useEffect(()=>{
+console.log(countryId)
+  },[countryId])
+
+  //this function sends an email
+const sendEmail = () => {
+  
+  const receiveremail:string = process.env.RECEIVER_MAIL??""; 
+  const senderName:string = NameRef.current?.value || ''; 
+  const senderEmail:string = emailRef.current?.value || '';
+  const senderCompanyName:string = companyNameRef.current?.value || '';
+  const senderMessage:string = messageRef.current?.value || '';
+  console.log(countryList.find((country)=>country.countryId==countryId.countryId)?.countryName)
+  const country:string=countryList.find((country)=>country.countryId==countryId.countryId)?.countryName || "";
+  if(receiveremail!=""&&senderName!=""&&senderEmail!=""&&senderCompanyName!=""&&senderMessage!=""&&country!="")
+  {
+    const templateParams = {
+      to_email: receiveremail,
+      from_name:senderName,
+      from_email:senderEmail,
+      from_companyName:senderCompanyName,
+      from_country:country,
+      message: senderMessage,
+    };
+  
+    const serviceID:string = process.env.EMAILJS_SERVICE_ID??""; // Replace with your service ID
+    const templateID = process.env.EMAILJS_TEMPLATE_ID??""; // Replace with your template ID
+    const userID = process.env.EMAILJS_PUBLIC_KEY??""; // Replace with your user ID
+    const email_promise=emailjs.send(serviceID, templateID, templateParams, userID)
+      .then((response) => {
+        console.log('Email sent:', response);
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  
+      toast.promise(email_promise,
+        {
+          pending: "Veuillez patienter, j'envoie un message...",
+          success: "Message envoyé avec succès.",
+          error: "Erreur, le message n'a pas été envoyé, veuillez réessayer."
+        },
+        toastOptions,
+      );
+  }
+  else
+  {
+    toast.info("Veuillez remplir toutes les entrées...",
+      toastOptions
+    );
+  }
+
+};
+
 
   return (
     <div className="w-full text-center">
@@ -94,16 +150,8 @@ const ContactForm = () => {
             label={"Votre nom"}
             placeholder={"S'il vous plaît entrez votre nom"}
             variant="outlined"
-            helperText={firstNameError ? "Please fill out the Name field" : ""}
-            error={firstNameError}
             margin="normal"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={NameRef}
             fullWidth
           />
         </Grid>
@@ -121,17 +169,10 @@ const ContactForm = () => {
             label={"Email du contact"}
             placeholder={"votre@emailid.com"}
             variant="outlined"
-            helperText={lastNameError ? "Veuillez remplir le champ Email" : ""}
-            error={lastNameError}
             margin="normal"
             fullWidth
-            value={lastName}
-            onChange={(e) => {
-              setLastName(e.target.value); // set the value of the input
-              if (lastNameError) {
-                setLastNameError(false);
-              }
-            }}
+            inputRef={emailRef}
+
           />
         </Grid>
 
@@ -148,16 +189,8 @@ const ContactForm = () => {
             label={"Nom de l'entreprise"}
             placeholder={"Entrez le nom de votre entreprise"}
             variant="outlined"
-            helperText={firstNameError ? "Veuillez entrer le nom de votre entreprise" : ""}
-            error={firstNameError}
             margin="normal"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={companyNameRef}
             fullWidth
           />
         </Grid>
@@ -177,10 +210,9 @@ const ContactForm = () => {
             autoHighlight
             value={countryId}
             onChange={(event, newValue: string) => {
+
+              console.log(newValue)
               setCountryId(newValue);
-              if (countryIdError) {
-                setCountryIdError(false);
-              }
             }}
             renderInput={(params) => (
               <TextField
@@ -188,10 +220,6 @@ const ContactForm = () => {
                 label={"Pays"}
                 variant="outlined"
                 placeholder="Choisissez le pays ..."
-                helperText={
-                  countryIdError ? "Veuillez sélectionner n'importe quel pays." : ""
-                }
-                error={countryIdError}
               />
             )}
           />
@@ -204,21 +232,12 @@ const ContactForm = () => {
             label={"Votre message"}
             placeholder={"Tapez votre message…."}
             variant="outlined"
-            helperText={
-              firstNameError ? "Veuillez remplir le champ Message" : ""
-            }
-            error={firstNameError}
             margin="normal"
             rows={5}
             className="mt-4"
             multiline
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={messageRef}
+
             fullWidth
           />
         </Grid>
@@ -228,8 +247,9 @@ const ContactForm = () => {
         variant="contained"
         color="primary"
         className="mt-8 mb-8 mx-auto hover:bg-[#558b2fa0]  font-[lato] uppercase text-[16px]"
+        onClick={sendEmail}
       >
-        Contacter le service commercial
+        Envoyer un message
       </Button>
     </div>
   );

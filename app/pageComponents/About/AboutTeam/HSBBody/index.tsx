@@ -22,7 +22,8 @@ const HSBBody = () => {
     <div ref={ref} className={` grid-cols-1 md:grid-cols-2 lg:grid-cols-5 justify-center items-center ${styles.container}`}>
       
       {Team_data_list.map((Employee,index)=>{
-      return(<motion.div 
+      return(<motion.div
+        key={"TEAM"+index} 
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={ListAnimations}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome,faShoppingCart,faCircleInfo,faPhone, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import Logo from "@/public/Images/logo/Logo.webp"
 import {
   Box,
@@ -21,10 +21,10 @@ import Link from "next/link";
 const drawerWidth = 240;
 
 const navItems = [
-  { name: "Présentation", link: "/" },
-  { name: "Nos Produits", link: "/products" },
-  { name: "À Propos", link: "/about" },
-  { name: "Contact", link: "/contact" },
+  { name: "Présentation", link: "/", icon:faHome },
+  { name: "Nos Produits", link: "/products", icon:faShoppingCart },
+  { name: "À Propos", link: "/about", icon:faCircleInfo },
+  { name: "Contact", link: "/contact", icon:faPhone },
 ];
 
 //This is the Mobile Side Navbar
@@ -36,20 +36,20 @@ const MobileNavbar = ({
 }: DesktopNavbarProps) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      {/*<div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center flex-col">
       <Image className="" height={100} src={Logo} alt={"Ben Amar Menuiserie Aluminium"} />
       </div>
-  */}<FontAwesomeIcon className="mt-4 mb-4" icon={faHome} />
       <Divider />
       
       <List>
         {navItems.map((item, index) => (
           <ListItemButton
-            key={index}
+            key={"SUBNAVITEM"+index}
             onClick={() => console.log(item)}
             sx={{ textAlign: "center" }}
           >
-            <ListItemText primary={<Link key={index} className=" text-[#558B2F] no-underline block" href={item.link}>{item.name}</Link>} />
+            <FontAwesomeIcon className="mt-0 mb-0" icon={item.icon} />
+            <ListItemText primary={<Link key={index} className=" text-[#000000] no-underline block" href={item.link}>{item.name}</Link>} />
           </ListItemButton>
         ))}
       </List>

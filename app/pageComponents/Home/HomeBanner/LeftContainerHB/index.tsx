@@ -11,7 +11,7 @@ const Animations = {
       opacity: 0,
       y: 0,
       x: -200,
-      scale: 0.9,
+      scale: 0.5,
     },
     visible: {
       opacity: 1,

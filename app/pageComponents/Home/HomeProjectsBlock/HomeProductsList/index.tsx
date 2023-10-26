@@ -48,6 +48,7 @@ const HomeProductsList = () => {
         <div ref={ref} className="grid w-full grid-cols-1 lg:grid-cols-3 gap-3 justify-center items-center">
           {imageList.map((item: imageListType, index: number) => (
             <motion.div
+            key={"PRODUCT"+index}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={ListAnimations}

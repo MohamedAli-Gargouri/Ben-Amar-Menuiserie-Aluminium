@@ -22,14 +22,14 @@ export const NavItemContainer = ({
   router,
 }: NavItemContainerProps) => {
   return (
-    <div className={styles.navItemContainer}>
+    <div className={`${styles.navItemContainer} flex w-full justify-end items-center`}>
       {navItems.map((item, index) => (
         <Link
-          key={index}
+          key={"NAVITEM"+index}
           className={`${styles.navItem} no-underline hover:no-underline`}
           onClick={() => menuClick(item.link)}
         >
-            <div className="uppercase  text-lg hover-underline-animation font-lato">
+            <div className="text-lg hover-underline-animation font-lato">
               {item.name}
             </div>
           

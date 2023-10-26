@@ -6,7 +6,7 @@ const Animations = {
     hidden: {
       opacity: 0.5,
       y: 0,
-      x: -1000,
+      x: -100,
       scale: 1,
     },
     visible: {

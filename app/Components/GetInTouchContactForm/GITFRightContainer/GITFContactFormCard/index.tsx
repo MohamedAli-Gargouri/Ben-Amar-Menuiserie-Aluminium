@@ -78,7 +78,7 @@ const GITFContactFormCard = () => {
                 <h3 className={styles.form_header}>Get in Touch</h3>
                 {formInputList.map((item, index) => {
                     return (
-                        <div key={index} className='mt-[10px]'>
+                        <div key={"FORMINPUT"+index} className='mt-[10px]'>
                             <FormInput
                                 type={item.type}
                                 placeholder={item.placeholder}
