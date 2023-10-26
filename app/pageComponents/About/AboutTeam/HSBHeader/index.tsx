@@ -1,8 +1,36 @@
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const Animations = {
+  hidden: {
+    opacity: 0.5,
+    y: 0,
+    x: -1000,
+    scale: 1,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 
 const HSBHeader = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
     return (
-        <div className={styles.header}>
+        <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={Animations}
+         className={styles.header}>
       <h2
         className={`text-white font-lato text-6xl font-semibold leading-5 xl:leading-[77px] text-center ${styles.heading}`}
       >
@@ -13,7 +41,7 @@ const HSBHeader = () => {
       >
         Découvrez les personnes dévouées qui portent notre vision et la concrétisent, le moteur de notre organisation.
       </p>
-    </div>
+    </motion.div>
     )
 }
 export default HSBHeader;

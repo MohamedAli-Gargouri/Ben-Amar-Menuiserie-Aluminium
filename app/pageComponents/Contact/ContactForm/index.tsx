@@ -1,6 +1,6 @@
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-
+import {countries_data_list} from "@/app/data/Contacts/countries"
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
 
@@ -54,18 +54,20 @@ const ContactForm = () => {
 
   useEffect(() => {
     // Fetch Country List
-    let countryList = [
-      { countryId: 1, countryName: "India" },
-      { countryId: 2, countryName: "USA" },
-      { countryId: 3, countryName: "UK" },
-      { countryId: 4, countryName: "Canada" },
-      { countryId: 5, countryName: "Australia" },
-    ];
+    interface Country {
+      countryId: string;
+      countryName: string;
+    }
+    let countryList:Country[] = [];
+
+    countries_data_list.map((country)=>{
+      countryList.push({ countryId: country.code, countryName: country.name })
+    })
     setCountryList(countryList);
   }, []);
 
   return (
-    <div className="w-full text-center rounded-lg bg-white shadow-md pt-12">
+    <div className="w-full text-center">
       <Grid
         container
         spacing={

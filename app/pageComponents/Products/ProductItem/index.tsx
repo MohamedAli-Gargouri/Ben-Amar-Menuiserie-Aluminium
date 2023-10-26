@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import styles from "./style.module.css"
 // Importing components
 import HTBLeftSliderControls from "@/app/pageComponents/Home/HomeTestimonialsBlock/HTBBody/HTBLeftContainer/HTBLeftSliderControls";
 
@@ -82,12 +82,13 @@ const ProductItem = ({
           {descriptionList.map((item: productItemProps, index: number) => {
             return (
               <motion.li
-                className="ml-[-5px] mb-2 font-lato "
+                className={`${styles.description} ml-[-5px] mb-2 font-lato`}
                 key={index}
                 variants={staggeredListVariants}
                 custom={index}
                 initial="hidden"
                 animate="visible"
+                
               >
                 {item.title}
               </motion.li>

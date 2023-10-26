@@ -12,26 +12,26 @@ export const Footer: FC = (): ReactElement => {
   return (
     <div className="w-full  px-[1.5rem]">
       <div className="border-r-0 border-l-0 border-b-2 border-t-2 border-solid border-[#558B2F] w-full mt-10 grid grid-cols-1 sm:grid-cols-4 py-6">
-        <div className="m-0">
-          <Image
+        <div className="m-0 flex flex-col justify-center items-center text-center">
+          {<Image
             src={Logo}
             width={150}
             height={50}
             alt="logo"
             title="logo"
             className="block"
-          />
-          <h2 className="text-black font-serif italic font-normal text-lg tracking-wide mt-7">
+          />}
+          <h2 className="text-black font-poppins text-lg font-semibold tracking-wide mt-7">
           Siège social
           </h2>
           <p className="text-black font-poppins text-[14px] font-normal tracking-wider">
           Ben Amar Menuiserie Aluminium
           </p>
           <div className="text-black font-poppins text-[14px] font-normal tracking-wider">
-          Route Gremda Km 7 entre sales de fêtes Kammoun et Said, 3041 Sfax
+          Route de Gremda km 7.5 Sfax , Tunisie 
           </div>
         </div>
-        <div className="m-0">
+        <div className="m-0 flex flex-col justify-center items-center text-center">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
           Entreprise
           </h2>
@@ -49,7 +49,7 @@ export const Footer: FC = (): ReactElement => {
             );
           })}
         </div>
-        <div className="m-0">
+        <div className="m-0 flex flex-col justify-center items-center text-center">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
           Soutien
           </h2>
@@ -65,7 +65,7 @@ export const Footer: FC = (): ReactElement => {
             );
           })}
         </div>
-        <div className="m-0">
+        <div className="m-0 flex flex-col justify-center items-center text-center">
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide mt-2">
           Suivez-nous
           </h2>
@@ -102,7 +102,7 @@ export const Footer: FC = (): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between mt-2 pb-2">
+      <div className="flex flex-col sm:flex-row justify-between mt-2 pb-2 text-center">
         <p className="text-black font-poppins text-[14px] font-normal tracking-wider">
           © {new Date().getFullYear()} Ben Amar Menuiserie Aluminium  All rights reserved.
         </p>

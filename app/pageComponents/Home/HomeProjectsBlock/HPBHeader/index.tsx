@@ -1,9 +1,36 @@
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
+const Animations = {
+    hidden: {
+      opacity: 0.5,
+      y: 0,
+      x: -1000,
+      scale: 1,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
 const HPBHeader = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   return (
 
-    <div className={styles.header}>
+    <motion.div 
+     ref={ref}
+     initial="hidden" 
+     animate={inView ? "visible" : "hidden"}
+     className={styles.header}
+     variants={Animations}>
       <h2
         className={`text-white font-lato text-6xl font-semibold leading-5 xl:leading-[77px] text-center ${styles.heading}`}
       >
@@ -14,7 +41,7 @@ const HPBHeader = () => {
       >
        Chez Ben Amar Menuiserie Aluminium, nous proposons une large gamme de produits et services en aluminium. Tous nos produits sont conformes aux réglementations fixées par la Tunisie et la conformité est au coeur de notre engagement.
       </p>
-    </div>
+    </motion.div>
   );
 };
 export default HPBHeader;

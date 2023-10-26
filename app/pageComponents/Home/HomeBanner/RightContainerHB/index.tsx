@@ -5,8 +5,30 @@ import { getNextImageIndex } from "../methods";
 import { sliderImages } from "../data";
 
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
+const Animations = {
+    hidden: {
+      opacity: 0,
+      y: 0,
+      x: 200,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 const RightContainerHB = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   // The following code is for the slider arrows
   const [currentLeftImage, setCurrentLeftImage] = useState(0);
   const [currentMiddleImage, setCurrentMiddleImage] = useState(1);
@@ -34,7 +56,11 @@ const RightContainerHB = () => {
   // The following code is for the slider arrows
 
   return (
-    <div className={styles.rightContainer}>
+    <motion.div
+    ref={ref}
+    variants={Animations}
+    animate={inView ? "visible" : "hidden"}
+     className={styles.rightContainer}>
       <div className={styles.spaceUpPattern} />
       <div className={styles.sliderOuterContainer}>
         <div className={styles.box}>
@@ -87,7 +113,7 @@ const RightContainerHB = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default RightContainerHB;

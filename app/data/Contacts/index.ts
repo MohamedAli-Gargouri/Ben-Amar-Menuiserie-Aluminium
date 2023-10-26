@@ -10,7 +10,7 @@ export const contact_data_list = [
     title: "Appelez-nous",
     description:
       "Appelez-nous pour parler à un membre de notre équipe. Nous sommes toujours heureux d'aider.",
-    contact: "(+216) 52 587 505",
+    contact: "Tele: 93 105 001 / 22 826 011 / 74 268 199 - Whatsapp: 55 826 011",
     icon: "/Images/Contact/Icons/phone.jxr",
   }
 ];
