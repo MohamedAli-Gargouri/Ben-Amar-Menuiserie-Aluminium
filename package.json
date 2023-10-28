@@ -1,9 +1,9 @@
 {
-  "name": "alumtec",
+  "name": "sbaa",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,7 +22,6 @@
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "emailjs-com": "^3.2.0",
-    "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
@@ -39,7 +38,10 @@
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.10",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
     "autoprefixer": "^10.4.14",
+    "eslint": "^8.52.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
   }

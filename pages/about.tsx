@@ -1,3 +1,4 @@
+import React from "react";
 import Footer from "@/app/Components/Footer";
 import Navbar from "@/app/Components/Navbar";
 import AboutBanner from "@/app/pageComponents/About/AboutBanner";

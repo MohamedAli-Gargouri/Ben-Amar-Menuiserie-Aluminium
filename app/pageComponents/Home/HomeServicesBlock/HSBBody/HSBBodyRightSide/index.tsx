@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-import Image from "next/image";
-
 import styles from "./style.module.css";
-import HSBBodyRSControls from "./HSBBodyRSControls";
 
 const HSBBodyRightSide = () => {
   return (

@@ -2,9 +2,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import styles from "./style.module.css"
-// Importing components
-import HTBLeftSliderControls from "@/app/pageComponents/Home/HomeTestimonialsBlock/HTBBody/HTBLeftContainer/HTBLeftSliderControls";
-
 interface productItemProps {
   background: boolean;
   direction: string;

@@ -4,6 +4,7 @@ import ProductItem from "@/app/pageComponents/Products/ProductItem";
 import { productsList } from "@/app/data/Products";
 import Footer from "@/app/Components/Footer";
 import Head from "next/head";
+import React from "react";
 const ProductsPage = () => {
   return (
     <>
@@ -11,7 +12,7 @@ const ProductsPage = () => {
         <title>Nos Produits | Ben Amar Menuiserie Aluminium</title>
         <meta
           name="description"
-          content="AlumTec, Glazing solutions are our passion"
+          content="Ben Amar Menuiserie Aluminium, Glazing solutions are our passion"
         />
         <meta
           name="keywords"

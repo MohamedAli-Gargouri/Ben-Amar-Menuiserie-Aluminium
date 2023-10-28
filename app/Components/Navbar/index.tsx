@@ -45,7 +45,6 @@ const MobileNavbar = ({
         {navItems.map((item, index) => (
           <ListItemButton
             key={"SUBNAVITEM"+index}
-            onClick={() => console.log(item)}
             sx={{ textAlign: "center" }}
           >
             <FontAwesomeIcon className="mt-0 mb-0" icon={item.icon} />

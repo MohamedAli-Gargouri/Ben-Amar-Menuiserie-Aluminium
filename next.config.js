@@ -8,13 +8,7 @@ const nextConfig = {
     EMAILJS_SERVICE_ID: process.env.EMAILJS_SERVICE_ID
   },
   images: {
-    domains: [
-      "bookslibrary.net",
-      "images.unsplash.com",
-      "s.yimg.com",
-      "generation-sessions.s3.amazonaws.com",
-      "alumtec.ca",
-    ],
+    domains: [],
   },
   experimental: {
     appDir: false,

@@ -67,9 +67,6 @@ const ContactForm = () => {
     })
     setCountryList(countryList);
   }, []);
-  useEffect(()=>{
-console.log(countryId)
-  },[countryId])
 
   //this function sends an email
 const sendEmail = () => {
@@ -79,7 +76,6 @@ const sendEmail = () => {
   const senderEmail:string = emailRef.current?.value || '';
   const senderCompanyName:string = companyNameRef.current?.value || '';
   const senderMessage:string = messageRef.current?.value || '';
-  console.log(countryList.find((country)=>country.countryId==countryId.countryId)?.countryName)
   const country:string=countryList.find((country)=>country.countryId==countryId.countryId)?.countryName || "";
   if(receiveremail!=""&&senderName!=""&&senderEmail!=""&&senderCompanyName!=""&&senderMessage!=""&&country!="")
   {
@@ -96,13 +92,6 @@ const sendEmail = () => {
     const templateID = process.env.EMAILJS_TEMPLATE_ID??""; // Replace with your template ID
     const userID = process.env.EMAILJS_PUBLIC_KEY??""; // Replace with your user ID
     const email_promise=emailjs.send(serviceID, templateID, templateParams, userID)
-      .then((response) => {
-        console.log('Email sent:', response);
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-      });
-  
       toast.promise(email_promise,
         {
           pending: "Veuillez patienter, j'envoie un message...",
@@ -210,8 +199,6 @@ const sendEmail = () => {
             autoHighlight
             value={countryId}
             onChange={(event, newValue: string) => {
-
-              console.log(newValue)
               setCountryId(newValue);
             }}
             renderInput={(params) => (

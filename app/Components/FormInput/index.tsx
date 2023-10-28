@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { FormInputType } from "../GetInTouchContactForm/GITFRightContainer/GITFContactFormCard/types";
+import { FormInputType } from "./types";
 
 const FormInput = (props: FormInputType) => {
     const {

@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-
+import React from "react";
 import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
