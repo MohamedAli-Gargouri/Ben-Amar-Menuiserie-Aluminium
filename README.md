@@ -2,12 +2,12 @@
 ## Introduction
 This project involves the creation of a website for Ben Amar Menuiserie Aluminium. It includes several key sections:
 
-1-A presentation page that provides an overview of the company.
-2-A contact page where users can send messages to the company and find its location.
-3-A products page displaying the company's product offerings.
-4-An about page that offers information about the company and introduces its team.
+1. A presentation page that provides an overview of the company.
+2. A contact page where users can send messages to the company and find its location.
+3. A products page displaying the company's product offerings.
+4. An about page that offers information about the company and introduces its team.
 ## Demo
-Coming soon.
+[Video Link](https://imgur.com/gallery/7vWJyVJ)
 ## Tools
 This project was developed using the Next.js framework in TypeScript and leveraged the styling capabilities of Tailwind CSS in combination with the Material UI components.
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
