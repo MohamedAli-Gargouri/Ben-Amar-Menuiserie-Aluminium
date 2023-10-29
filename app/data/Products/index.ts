@@ -3,7 +3,7 @@ export const productsList = [
     background: false,
     direction: "left",
     title: "Fenêtres aluminium",
-    image: "/Images/Products/1.jpg",
+    image: "/Images/Products/1.webp",
     descriptionList: [
       {
         id: 1,
@@ -27,7 +27,7 @@ export const productsList = [
     background: false,
     direction: "right",
     title: "Portes aluminium",
-    image: "/Images/Products/2.jpg",
+    image: "/Images/Products/2.webp",
     descriptionList: [
       {
         id: 1,
@@ -75,7 +75,7 @@ export const productsList = [
     background: false,
     direction: "right",
     title: "Portes et fenêtres Battante",
-    image: "/Images/Products/4.jpg",
+    image: "/Images/Products/4.webp",
     descriptionList: [
       {
         id: 1,
@@ -125,7 +125,7 @@ export const productsList = [
     background: false,
     direction: "right",
     title: "Facade Vitré",
-    image: "/Images/Products/6.jpg",
+    image: "/Images/Products/6.webp",
     descriptionList: [
       {
         id: 1,
@@ -150,7 +150,7 @@ export const productsList = [
     background: false,
     direction: "left",
     title: "Facade Alucobond",
-    image: "/Images/Products/7.jpg",
+    image: "/Images/Products/7.webp",
     descriptionList: [
       {
         id: 1,
@@ -174,7 +174,7 @@ export const productsList = [
     background: false,
     direction: "right",
     title: "Cabine Douche",
-    image: "/Images/Products/8.jpg",
+    image: "/Images/Products/8.webp",
     descriptionList: [
       {
         id: 1,
@@ -199,7 +199,7 @@ export const productsList = [
     background: false,
     direction: "left",
     title: "Mur rideau",
-    image: "/Images/Products/9.jpg",
+    image: "/Images/Products/9.webp",
     descriptionList: [
       {
         id: 1,
@@ -238,7 +238,7 @@ export const productsList = [
     background: false,
     direction: "left",
     title: "Tables aluminium",
-    image: "/Images/Products/11.jpg",
+    image: "/Images/Products/11.webp",
     descriptionList: [
       {
         id: 1,
@@ -289,7 +289,7 @@ export const productsList = [
     background: false,
     direction: "left",
     title: "Canapé aluminium",
-    image: "/Images/Products/13.jpg",
+    image: "/Images/Products/13.webp",
     descriptionList: [
       {
         id: 1,

@@ -26,6 +26,15 @@ module.exports = {
           // You can define more colors here as needed
         },
       },
+      animation: {
+        fade: "fade 1s ease-in-out",
+      },
+      keyframes: {
+        fade: {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        }
+      },
     },
   },
   plugins: [],

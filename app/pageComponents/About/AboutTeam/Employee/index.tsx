@@ -13,13 +13,13 @@ interface EmployeeCardProps {
 }
 export default function EmployeeCard({firstName,lastName,position,imgUrl}:EmployeeCardProps) {
   return (
-    <Card className=' shadow-lg m-4' sx={{ maxWidth: 345 }}>
+    <Card className='w-full shadow-lg max-w-[20rem]'>
       <CardActionArea>
         <CardMedia
           component="img"
           src={imgUrl}
-          height={300}
-          alt="green iguana"
+          height={390}
+          alt={firstName+" "+lastName}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" className=' text-center' component="div">

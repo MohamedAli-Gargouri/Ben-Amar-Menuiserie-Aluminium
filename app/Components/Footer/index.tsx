@@ -53,7 +53,7 @@ export const Footer: FC = (): ReactElement => {
           <h2 className="text-black font-poppins text-lg font-semibold tracking-wide">
           Soutien
           </h2>
-          {[{label:"Contact Us",url:"/contact"}].map((v, i) => {
+          {[{label:"Contactez-nous",url:"/contact"}].map((v, i) => {
             return (
               <Link
                 href={v.url}
@@ -106,7 +106,7 @@ export const Footer: FC = (): ReactElement => {
         <p className="text-black font-poppins text-[14px] font-normal tracking-wider">
           © {new Date().getFullYear()} Ben Amar Menuiserie Aluminium  All rights reserved.
         </p>
-        <p>
+        {/*<p>
           <span className="text-black font-poppins text-[14px] font-normal tracking-wider">
             Developed by
           </span>
@@ -120,7 +120,7 @@ export const Footer: FC = (): ReactElement => {
               GIT
             </a>
           </span>
-        </p>
+          </p>*/}
       </div>
     </div>
   );

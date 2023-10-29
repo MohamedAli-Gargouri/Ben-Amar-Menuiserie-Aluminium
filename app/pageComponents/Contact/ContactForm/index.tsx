@@ -1,8 +1,9 @@
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState,useRef, MutableRefObject } from "react";
 import {countries_data_list} from "@/app/data/Contacts/countries"
 import emailjs from 'emailjs-com';
 import { toast, ToastOptions } from 'react-toastify';
+import debounce from 'lodash/debounce';
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
   const toastOptions:ToastOptions = {
@@ -37,6 +38,8 @@ const ContactForm = () => {
     countryId: string;
     countryName: string;
   }
+  const emailSentLimit:Number=5;
+  const emailSent:MutableRefObject<number>=useRef(0)
   const NameRef=useRef<HTMLInputElement | null>(null)
   const emailRef=useRef<HTMLInputElement | null>(null)
   const companyNameRef=useRef<HTMLInputElement | null>(null)
@@ -57,7 +60,6 @@ const ContactForm = () => {
   // For Country autocomplete component
 
   // Use Effect for Country autocomplete component
-
   useEffect(() => {
     // Fetch Country List
     let countryList:Country[] = [];
@@ -69,8 +71,11 @@ const ContactForm = () => {
   }, []);
 
   //this function sends an email
-const sendEmail = () => {
-  
+const sendEmail =debounce(() => {
+
+  //testing if the email sent is less than the limit to avoid spam
+  if(emailSent.current<emailSentLimit)
+  {
   const receiveremail:string = process.env.RECEIVER_MAIL??""; 
   const senderName:string = NameRef.current?.value || ''; 
   const senderEmail:string = emailRef.current?.value || '';
@@ -100,6 +105,9 @@ const sendEmail = () => {
         },
         toastOptions,
       );
+      email_promise.then(()=>{   
+        emailSent.current+=1
+      })
   }
   else
   {
@@ -107,8 +115,16 @@ const sendEmail = () => {
       toastOptions
     );
   }
+}else
+{
+  //Case where he sent too many emails, above the limit
+    toast.error("Vous avez envoyé trop de messages, vous avez atteint votre limite, vous ne pouvez plus en envoyer.",
+      toastOptions
+    );
+  
+}
 
-};
+},500) 
 
 
   return (

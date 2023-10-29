@@ -25,6 +25,17 @@ const Animations = {
       },
     },
   };
+  function generateRandomString(length:number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomString += characters.charAt(randomIndex);
+    }
+  
+    return randomString;
+  }
 const RightContainerHB = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -43,7 +54,7 @@ const RightContainerHB = () => {
       setCurrentLeftImage(nextLeftImageIndex);
       setCurrentMiddleImage(nextMiddleImageIndex);
       setCurrentRightImage(nextRightImageIndex);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(timer);
@@ -65,7 +76,7 @@ const RightContainerHB = () => {
       <div className={styles.sliderOuterContainer}>
         <div className={styles.box}>
           <Image
-            className={styles.frameImageDesktop}
+            className={`${styles.frameImageDesktop}`}
             src="/Images/Home/Slider/Frame.png"
             alt="FRAMING"
             width={822.07}
@@ -79,7 +90,8 @@ const RightContainerHB = () => {
           <div className={styles.sliderOuterContainer}>
             <div className={styles.box}>
               <Image
-                className={`${styles.middleImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.middleImage} ${styles.active} shadow-2xl animate-fade`}
                 src={middleImage}
                 alt="2"
                 width={618}
@@ -90,7 +102,8 @@ const RightContainerHB = () => {
             </div>
             <div className={`${styles.box} ${styles.overlay}`}>
               <Image
-                className={`${styles.leftImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.leftImage} ${styles.active} shadow-2xl animate-fade`}
                 src={leftImage}
                 alt="1"
                 width={201}
@@ -101,7 +114,8 @@ const RightContainerHB = () => {
             </div>
             <div className={`${styles.box} ${styles.overlay}`}>
               <Image
-                className={`${styles.rightImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.rightImage} ${styles.active} shadow-2xl  animate-fade`}
                 src={rightImage}
                 alt="3"
                 width={201}
