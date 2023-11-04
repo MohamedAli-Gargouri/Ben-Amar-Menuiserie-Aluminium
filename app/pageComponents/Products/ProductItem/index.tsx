@@ -1,10 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-// Importing components
-import HTBLeftSliderControls from "@/app/pageComponents/Home/HomeTestimonialsBlock/HTBBody/HTBLeftContainer/HTBLeftSliderControls";
-
+import styles from "./style.module.css"
 interface productItemProps {
   background: boolean;
   direction: string;
@@ -64,54 +61,53 @@ const ProductItem = ({
         overflow: "hidden",
       }}
       className={`
-      bg-cover bg-repeat w-full h-[542px]
-          flex ${direction === "left" ? "flex-row" : "flex-row-reverse"}
+      bg-cover bg-repeat w-full h-full
+          flex ${direction === "left" ? " flex-col md:flex-row" : " flex-col md:flex-row-reverse"}
       `}
     >
-      <div className="w-3/6 flex flex-col h-full pl-20 mt-[62px]">
+      <div className="w-full   md:w-3/6 flex flex-col  justify-center items-center ">
         <motion.h1
-          className="text-5xl font-bold text-black"
+          className="text-5xl text-center font-lato text-black"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
+          
         >
           {title}
         </motion.h1>
-        <ul className="mt-4 mb-4 text-2xl">
+        <ul className="text-2xl">
           {descriptionList.map((item: productItemProps, index: number) => {
             return (
               <motion.li
-                className="ml-[-5px] mb-2"
-                key={index}
+                className={`${styles.description} ml-[-5px] mb-2 font-lato`}
+                key={"DESCRIPTION"+index}
                 variants={staggeredListVariants}
                 custom={index}
                 initial="hidden"
                 animate="visible"
+                
               >
                 {item.title}
               </motion.li>
             );
           })}
         </ul>
-        <br />
-        <HTBLeftSliderControls />
       </div>
       <motion.div
-        className="w-3/6 flex justify-end"
+        className={`backdrop-filter p-0 w-full md:w-3/6 flex justify-center ${direction=="left"?"md:justify-end":"md:justify-start"}`}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4 }}
       >
-        <Image
+        <img
+          
           src={image}
           alt="Product Image"
-          width={479}
-          height={496}
-          className="mt-4 block mr-20"
+          className=" w-full h-full"
         />
       </motion.div>
     </motion.div>
-  );
+  );         
 };
 
 export default ProductItem;

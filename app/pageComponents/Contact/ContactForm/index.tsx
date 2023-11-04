@@ -1,9 +1,22 @@
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState,useRef, MutableRefObject } from "react";
+import {countries_data_list} from "@/app/data/Contacts/countries"
+import emailjs from 'emailjs-com';
+import { toast, ToastOptions } from 'react-toastify';
+import debounce from 'lodash/debounce';
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
-
+  const toastOptions:ToastOptions = {
+    position:"bottom-center",
+    autoClose:5000,
+    hideProgressBar:false,
+    closeOnClick:true,
+    rtl:false,
+    pauseOnFocusLoss:true,
+    draggable:true,
+    pauseOnHover:true,
+    theme:"light"
+  };
   useEffect(() => {
     // Function to update window size
     function updateWindowSize() {
@@ -21,28 +34,24 @@ const ContactForm = () => {
       window.removeEventListener("resize", updateWindowSize);
     };
   }, []);
-
-  // First Name
-  const [firstName, setFirstName] = useState("");
-
-  // First Name Error
-  const [firstNameError, setFirstNameError] = useState(false);
-
-  // Last Name
-  const [lastName, setLastName] = useState("");
-
-  // Last Name Error
-  const [lastNameError, setLastNameError] = useState(false);
-
+  interface Country {
+    countryId: string;
+    countryName: string;
+  }
+  const emailSentLimit:Number=5;
+  const emailSent:MutableRefObject<number>=useRef(0)
+  const NameRef=useRef<HTMLInputElement | null>(null)
+  const emailRef=useRef<HTMLInputElement | null>(null)
+  const companyNameRef=useRef<HTMLInputElement | null>(null)
+  const messageRef=useRef<HTMLInputElement | null>(null)
   // Country Id
-  const [countryId, setCountryId] = useState<any>(null);
+  const [countryId, setCountryId] = useState<any>({countryId: 'TN', countryName: 'Tunisia'});
 
   // Country Id Error
   const [countryIdError, setCountryIdError] = useState(false);
 
   // For Country autocomplete component
-  const [countryList, setCountryList] = useState<any>([]);
-
+  const [countryList, setCountryList] = useState<Country[]>([]);
   // For autocomplete component
   const countryDefaultProps = {
     options: countryList,
@@ -51,21 +60,75 @@ const ContactForm = () => {
   // For Country autocomplete component
 
   // Use Effect for Country autocomplete component
-
   useEffect(() => {
     // Fetch Country List
-    let countryList = [
-      { countryId: 1, countryName: "India" },
-      { countryId: 2, countryName: "USA" },
-      { countryId: 3, countryName: "UK" },
-      { countryId: 4, countryName: "Canada" },
-      { countryId: 5, countryName: "Australia" },
-    ];
+    let countryList:Country[] = [];
+
+    countries_data_list.map((country)=>{
+      countryList.push({ countryId: country.code, countryName: country.name })
+    })
     setCountryList(countryList);
   }, []);
 
+  //this function sends an email
+const sendEmail =debounce(() => {
+
+  //testing if the email sent is less than the limit to avoid spam
+  if(emailSent.current<emailSentLimit)
+  {
+  const receiveremail:string = process.env.RECEIVER_MAIL??""; 
+  const senderName:string = NameRef.current?.value || ''; 
+  const senderEmail:string = emailRef.current?.value || '';
+  const senderCompanyName:string = companyNameRef.current?.value || '';
+  const senderMessage:string = messageRef.current?.value || '';
+  const country:string=countryList.find((country)=>country.countryId==countryId.countryId)?.countryName || "";
+  if(receiveremail!=""&&senderName!=""&&senderEmail!=""&&senderCompanyName!=""&&senderMessage!=""&&country!="")
+  {
+    const templateParams = {
+      to_email: receiveremail,
+      from_name:senderName,
+      from_email:senderEmail,
+      from_companyName:senderCompanyName,
+      from_country:country,
+      message: senderMessage,
+    };
+  
+    const serviceID:string = process.env.EMAILJS_SERVICE_ID??""; // Replace with your service ID
+    const templateID = process.env.EMAILJS_TEMPLATE_ID??""; // Replace with your template ID
+    const userID = process.env.EMAILJS_PUBLIC_KEY??""; // Replace with your user ID
+    const email_promise=emailjs.send(serviceID, templateID, templateParams, userID)
+      toast.promise(email_promise,
+        {
+          pending: "Veuillez patienter, j'envoie un message...",
+          success: "Message envoyé avec succès.",
+          error: "Erreur, le message n'a pas été envoyé, veuillez réessayer."
+        },
+        toastOptions,
+      );
+      email_promise.then(()=>{   
+        emailSent.current+=1
+      })
+  }
+  else
+  {
+    toast.info("Veuillez remplir toutes les entrées...",
+      toastOptions
+    );
+  }
+}else
+{
+  //Case where he sent too many emails, above the limit
+    toast.error("Vous avez envoyé trop de messages, vous avez atteint votre limite, vous ne pouvez plus en envoyer.",
+      toastOptions
+    );
+  
+}
+
+},500) 
+
+
   return (
-    <div className="w-full rounded-lg bg-white shadow-md pl-20 pr-20 pt-12">
+    <div className="w-full text-center">
       <Grid
         container
         spacing={
@@ -89,19 +152,11 @@ const ContactForm = () => {
         >
           <TextField
             id="name"
-            label={"Your name*"}
-            placeholder={"Please Enter your name"}
-            variant="standard"
-            helperText={firstNameError ? "Please fill out the Name field" : ""}
-            error={firstNameError}
+            label={"Votre nom"}
+            placeholder={"S'il vous plaît entrez votre nom"}
+            variant="outlined"
             margin="normal"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={NameRef}
             fullWidth
           />
         </Grid>
@@ -116,20 +171,13 @@ const ContactForm = () => {
         >
           <TextField
             id="email"
-            label={"Contact email *"}
-            placeholder={"you@emailid.com"}
-            variant="standard"
-            helperText={lastNameError ? "Please fill out the Email field" : ""}
-            error={lastNameError}
+            label={"Email du contact"}
+            placeholder={"votre@emailid.com"}
+            variant="outlined"
             margin="normal"
             fullWidth
-            value={lastName}
-            onChange={(e) => {
-              setLastName(e.target.value); // set the value of the input
-              if (lastNameError) {
-                setLastNameError(false);
-              }
-            }}
+            inputRef={emailRef}
+
           />
         </Grid>
 
@@ -143,19 +191,11 @@ const ContactForm = () => {
         >
           <TextField
             id="companyName"
-            label={"Company name**"}
-            placeholder={"Enter your company name"}
-            variant="standard"
-            helperText={firstNameError ? "Please Enter your company name" : ""}
-            error={firstNameError}
+            label={"Nom de l'entreprise"}
+            placeholder={"Entrez le nom de votre entreprise"}
+            variant="outlined"
             margin="normal"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={companyNameRef}
             fullWidth
           />
         </Grid>
@@ -176,20 +216,13 @@ const ContactForm = () => {
             value={countryId}
             onChange={(event, newValue: string) => {
               setCountryId(newValue);
-              if (countryIdError) {
-                setCountryIdError(false);
-              }
             }}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={"Country"}
-                variant="standard"
-                placeholder="Select Country ..."
-                helperText={
-                  countryIdError ? "* Please select any Country." : ""
-                }
-                error={countryIdError}
+                label={"Pays"}
+                variant="outlined"
+                placeholder="Choisissez le pays ..."
               />
             )}
           />
@@ -199,41 +232,27 @@ const ContactForm = () => {
         <Grid item xs={12}>
           <TextField
             id="message"
-            label={"Your message *"}
-            placeholder={"Type your message…."}
-            variant="standard"
-            helperText={
-              firstNameError ? "Please fill out the Message field" : ""
-            }
-            error={firstNameError}
+            label={"Votre message"}
+            placeholder={"Tapez votre message…."}
+            variant="outlined"
             margin="normal"
             rows={5}
-            className="mt-0"
+            className="mt-4"
             multiline
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value); // set the value of the input
-              if (firstNameError) {
-                setFirstNameError(false);
-              }
-            }}
+            inputRef={messageRef}
+
             fullWidth
           />
         </Grid>
       </Grid>
 
-      <p className="mt-[16px] text-[##757575] text-[15px] leading-7">
-        By submitting this form you agree to our terms and conditions and our
-        Privacy Policy which explains how we may collect, use and disclose your
-        personal information including to third parties.
-      </p>
-
       <Button
         variant="contained"
         color="primary"
-        className="mt-8 mb-8 bg-[#123E95] hover:bg-[#1e325c] font-[lato] text-white uppercase text-[16px]"
+        className="mt-8 mb-8 mx-auto hover:bg-[#558b2fa0]  font-[lato] uppercase text-[16px]"
+        onClick={sendEmail}
       >
-        Contact sales
+        Envoyer un message
       </Button>
     </div>
   );

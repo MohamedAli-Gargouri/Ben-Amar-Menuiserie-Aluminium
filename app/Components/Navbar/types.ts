@@ -1,5 +1,7 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 export type NavItemContainerProps = {
-    navItems: { name: string, link: string }[];
+    navItems: { name: string, link: string, icon:IconDefinition }[];
     router: any;
 }
 

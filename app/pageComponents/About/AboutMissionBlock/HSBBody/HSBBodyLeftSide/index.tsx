@@ -1,10 +1,37 @@
 import Image from "next/image";
 
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
+const Animations = {
+    hidden: {
+      opacity: 0,
+      y: 0,
+      x: 0,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
 const HSBBodyLeftSide = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   return (
-    <div className={`${styles.sliderOuterContainer} ${styles.container}`}>
+    <motion.div 
+    ref={ref}
+    initial="hidden"
+    animate={inView ? "visible" : "hidden"}
+    variants={Animations}
+    className={`${styles.sliderOuterContainer} ${styles.container}`}>
       <div className={styles.box}>
         <div className={styles.containerTlPatternImage}>
           <Image
@@ -44,7 +71,7 @@ const HSBBodyLeftSide = () => {
             <div>
               <Image
                 className={styles.ServicesImage}
-                src="/Images/Home/Services/Design.png"
+                src="/Images/About/Mission.jpg"
                 alt="Design Image"
                 width={489}
                 height={500}
@@ -54,7 +81,7 @@ const HSBBodyLeftSide = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default HSBBodyLeftSide;

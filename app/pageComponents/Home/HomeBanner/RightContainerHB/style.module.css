@@ -6,9 +6,9 @@
   height: auto;
   background: linear-gradient(
     157.51deg,
-    #e1e7ff -14.3%,
-    #dbe2fc 49.95%,
-    #fafbff 102.59%
+    #558b2fab -14.3%,
+    #558b2f3c 49.95%,
+    #558b2f 102.59%
   );
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
   border-radius: 0px;
@@ -77,6 +77,7 @@
   margin-left: -20px;
   margin-top: 400px;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .middleImage {
@@ -88,6 +89,7 @@
   margin-left: 5rem;
   margin-top: 80px;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .rightImage {
@@ -99,6 +101,7 @@
   margin-left: 68%;
   margin-top: 30px;
   border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations for images */

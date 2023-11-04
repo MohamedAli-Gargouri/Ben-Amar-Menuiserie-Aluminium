@@ -5,8 +5,41 @@ import { getNextImageIndex } from "../methods";
 import { sliderImages } from "../data";
 
 import styles from "./style.module.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
+const Animations = {
+    hidden: {
+      opacity: 0,
+      y: 0,
+      x: 200,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+  function generateRandomString(length:number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let randomString = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomString += characters.charAt(randomIndex);
+    }
+  
+    return randomString;
+  }
 const RightContainerHB = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   // The following code is for the slider arrows
   const [currentLeftImage, setCurrentLeftImage] = useState(0);
   const [currentMiddleImage, setCurrentMiddleImage] = useState(1);
@@ -21,7 +54,7 @@ const RightContainerHB = () => {
       setCurrentLeftImage(nextLeftImageIndex);
       setCurrentMiddleImage(nextMiddleImageIndex);
       setCurrentRightImage(nextRightImageIndex);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearInterval(timer);
@@ -34,26 +67,31 @@ const RightContainerHB = () => {
   // The following code is for the slider arrows
 
   return (
-    <div className={styles.rightContainer}>
+    <motion.div
+    ref={ref}
+    variants={Animations}
+    animate={inView ? "visible" : "hidden"}
+     className={styles.rightContainer}>
       <div className={styles.spaceUpPattern} />
       <div className={styles.sliderOuterContainer}>
         <div className={styles.box}>
           <Image
-            className={styles.frameImageDesktop}
+            className={`${styles.frameImageDesktop}`}
             src="/Images/Home/Slider/Frame.png"
             alt="FRAMING"
             width={822.07}
             height={638.66}
             loading="eager"
-            title="Alum Tec"
+            title="Ben Amar Menuiserie Aluminium"
           />
-          <div className={styles.frameImageMobile} title="Alum Tec" />
+          <div className={styles.frameImageMobile} title="Ben Amar Menuiserie Aluminium" />
         </div>
         <div className={`${styles.box} ${styles.overlay}`}>
           <div className={styles.sliderOuterContainer}>
             <div className={styles.box}>
               <Image
-                className={`${styles.middleImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.middleImage} ${styles.active} shadow-2xl animate-fade`}
                 src={middleImage}
                 alt="2"
                 width={618}
@@ -64,7 +102,8 @@ const RightContainerHB = () => {
             </div>
             <div className={`${styles.box} ${styles.overlay}`}>
               <Image
-                className={`${styles.leftImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.leftImage} ${styles.active} shadow-2xl animate-fade`}
                 src={leftImage}
                 alt="1"
                 width={201}
@@ -75,7 +114,8 @@ const RightContainerHB = () => {
             </div>
             <div className={`${styles.box} ${styles.overlay}`}>
               <Image
-                className={`${styles.rightImage} ${styles.active}`}
+                key={generateRandomString(100)}
+                className={`${styles.rightImage} ${styles.active} shadow-2xl  animate-fade`}
                 src={rightImage}
                 alt="3"
                 width={201}
@@ -87,7 +127,7 @@ const RightContainerHB = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default RightContainerHB;

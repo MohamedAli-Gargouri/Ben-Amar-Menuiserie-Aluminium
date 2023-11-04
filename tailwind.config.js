@@ -21,6 +21,19 @@ module.exports = {
           serif: ["ui-serif", "Georgia"],
           lato: ["Lato", "sans-serif"],
         },
+        colors: {
+          primary: '#558B2F',
+          // You can define more colors here as needed
+        },
+      },
+      animation: {
+        fade: "fade 1s ease-in-out",
+      },
+      keyframes: {
+        fade: {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        }
       },
     },
   },

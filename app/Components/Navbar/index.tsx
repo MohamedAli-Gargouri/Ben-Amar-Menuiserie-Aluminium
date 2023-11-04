@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome,faShoppingCart,faCircleInfo,faPhone, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import Logo from "@/public/Images/logo/Logo.webp"
 import {
   Box,
   CssBaseline,
@@ -14,16 +16,18 @@ import { useRouter } from "next/router";
 import { DesktopNavbar } from "./methods";
 import { DesktopNavbarProps, NavbarProps } from "./types";
 import styles from "./style.module.css";
-
+import Image from "next/image";
+import Link from "next/link";
 const drawerWidth = 240;
 
 const navItems = [
-  { name: "Home", link: "/" },
-  { name: "About Us", link: "/about" },
-  { name: "Our Products", link: "/products" },
-  { name: "Contact us", link: "/contact" },
+  { name: "Présentation", link: "/", icon:faHome },
+  { name: "Nos Produits", link: "/products", icon:faShoppingCart },
+  { name: "À Propos", link: "/about", icon:faCircleInfo },
+  { name: "Contact", link: "/contact", icon:faPhone },
 ];
 
+//This is the Mobile Side Navbar
 const MobileNavbar = ({
   navItems,
   router,
@@ -32,18 +36,19 @@ const MobileNavbar = ({
 }: DesktopNavbarProps) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        ALUM TEC
-      </Typography>
+      <div className="flex justify-center items-center flex-col">
+      <Image className="" height={100} src={Logo} alt={"Ben Amar Menuiserie Aluminium"} />
+      </div>
       <Divider />
+      
       <List>
         {navItems.map((item, index) => (
           <ListItemButton
-            key={index}
-            onClick={() => console.log(item)}
+            key={"SUBNAVITEM"+index}
             sx={{ textAlign: "center" }}
           >
-            <ListItemText primary={item.name} />
+            <FontAwesomeIcon className="mt-0 mb-0" icon={item.icon} />
+            <ListItemText primary={<Link key={index} className=" text-[#000000] no-underline block" href={item.link}>{item.name}</Link>} />
           </ListItemButton>
         ))}
       </List>
