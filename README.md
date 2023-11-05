@@ -1,4 +1,5 @@
 
+![Ben-Amar-Menuiserie-Aluminium](https://imgur.com/tHOOqw1.png)
 ## Introduction
 This project involves the creation of a website for Ben Amar Menuiserie Aluminium. It includes several key sections:
 
