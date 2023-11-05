@@ -1,21 +1,21 @@
-import { Autocomplete, Button, Grid, TextField } from "@mui/material";
-import { useEffect, useState,useRef, MutableRefObject } from "react";
-import {countries_data_list} from "@/app/data/Contacts/countries"
+import { Autocomplete, Button, Grid, TextField } from '@mui/material';
+import { useEffect, useState, useRef, MutableRefObject } from 'react';
+import { countries_data_list } from '@/app/data/Contacts/countries';
 import emailjs from 'emailjs-com';
 import { toast, ToastOptions } from 'react-toastify';
 import debounce from 'lodash/debounce';
 const ContactForm = () => {
   const [windowSize, setWindowSize] = useState([0, 0]);
-  const toastOptions:ToastOptions = {
-    position:"bottom-center",
-    autoClose:5000,
-    hideProgressBar:false,
-    closeOnClick:true,
-    rtl:false,
-    pauseOnFocusLoss:true,
-    draggable:true,
-    pauseOnHover:true,
-    theme:"light"
+  const toastOptions: ToastOptions = {
+    position: 'bottom-center',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    rtl: false,
+    pauseOnFocusLoss: true,
+    draggable: true,
+    pauseOnHover: true,
+    theme: 'light',
   };
   useEffect(() => {
     // Function to update window size
@@ -27,25 +27,28 @@ const ContactForm = () => {
     updateWindowSize();
 
     // Add event listener for window resize
-    window.addEventListener("resize", updateWindowSize);
+    window.addEventListener('resize', updateWindowSize);
 
     // Clean up the event listener when component unmounts
     return () => {
-      window.removeEventListener("resize", updateWindowSize);
+      window.removeEventListener('resize', updateWindowSize);
     };
   }, []);
   interface Country {
     countryId: string;
     countryName: string;
   }
-  const emailSentLimit:Number=5;
-  const emailSent:MutableRefObject<number>=useRef(0)
-  const NameRef=useRef<HTMLInputElement | null>(null)
-  const emailRef=useRef<HTMLInputElement | null>(null)
-  const companyNameRef=useRef<HTMLInputElement | null>(null)
-  const messageRef=useRef<HTMLInputElement | null>(null)
+  const emailSentLimit: Number = 5;
+  const emailSent: MutableRefObject<number> = useRef(0);
+  const NameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const companyNameRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLInputElement | null>(null);
   // Country Id
-  const [countryId, setCountryId] = useState<any>({countryId: 'TN', countryName: 'Tunisia'});
+  const [countryId, setCountryId] = useState<any>({
+    countryId: 'TN',
+    countryName: 'Tunisia',
+  });
 
   // Country Id Error
   const [countryIdError, setCountryIdError] = useState(false);
@@ -62,70 +65,75 @@ const ContactForm = () => {
   // Use Effect for Country autocomplete component
   useEffect(() => {
     // Fetch Country List
-    let countryList:Country[] = [];
+    let countryList: Country[] = [];
 
-    countries_data_list.map((country)=>{
-      countryList.push({ countryId: country.code, countryName: country.name })
-    })
+    countries_data_list.map((country) => {
+      countryList.push({ countryId: country.code, countryName: country.name });
+    });
     setCountryList(countryList);
   }, []);
 
   //this function sends an email
-const sendEmail =debounce(() => {
+  const sendEmail = debounce(() => {
+    //testing if the email sent is less than the limit to avoid spam
+    if (emailSent.current < emailSentLimit) {
+      const receiveremail: string = process.env.RECEIVER_MAIL ?? '';
+      const senderName: string = NameRef.current?.value || '';
+      const senderEmail: string = emailRef.current?.value || '';
+      const senderCompanyName: string = companyNameRef.current?.value || '';
+      const senderMessage: string = messageRef.current?.value || '';
+      const country: string =
+        countryList.find((country) => country.countryId == countryId.countryId)
+          ?.countryName || '';
+      if (
+        receiveremail != '' &&
+        senderName != '' &&
+        senderEmail != '' &&
+        senderCompanyName != '' &&
+        senderMessage != '' &&
+        country != ''
+      ) {
+        const templateParams = {
+          to_email: receiveremail,
+          from_name: senderName,
+          from_email: senderEmail,
+          from_companyName: senderCompanyName,
+          from_country: country,
+          message: senderMessage,
+        };
 
-  //testing if the email sent is less than the limit to avoid spam
-  if(emailSent.current<emailSentLimit)
-  {
-  const receiveremail:string = process.env.RECEIVER_MAIL??""; 
-  const senderName:string = NameRef.current?.value || ''; 
-  const senderEmail:string = emailRef.current?.value || '';
-  const senderCompanyName:string = companyNameRef.current?.value || '';
-  const senderMessage:string = messageRef.current?.value || '';
-  const country:string=countryList.find((country)=>country.countryId==countryId.countryId)?.countryName || "";
-  if(receiveremail!=""&&senderName!=""&&senderEmail!=""&&senderCompanyName!=""&&senderMessage!=""&&country!="")
-  {
-    const templateParams = {
-      to_email: receiveremail,
-      from_name:senderName,
-      from_email:senderEmail,
-      from_companyName:senderCompanyName,
-      from_country:country,
-      message: senderMessage,
-    };
-  
-    const serviceID:string = process.env.EMAILJS_SERVICE_ID??""; // Replace with your service ID
-    const templateID = process.env.EMAILJS_TEMPLATE_ID??""; // Replace with your template ID
-    const userID = process.env.EMAILJS_PUBLIC_KEY??""; // Replace with your user ID
-    const email_promise=emailjs.send(serviceID, templateID, templateParams, userID)
-      toast.promise(email_promise,
-        {
-          pending: "Veuillez patienter, j'envoie un message...",
-          success: "Message envoyé avec succès.",
-          error: "Erreur, le message n'a pas été envoyé, veuillez réessayer."
-        },
+        const serviceID: string = process.env.EMAILJS_SERVICE_ID ?? ''; // Replace with your service ID
+        const templateID = process.env.EMAILJS_TEMPLATE_ID ?? ''; // Replace with your template ID
+        const userID = process.env.EMAILJS_PUBLIC_KEY ?? ''; // Replace with your user ID
+        const email_promise = emailjs.send(
+          serviceID,
+          templateID,
+          templateParams,
+          userID,
+        );
+        toast.promise(
+          email_promise,
+          {
+            pending: "Veuillez patienter, j'envoie un message...",
+            success: 'Message envoyé avec succès.',
+            error: "Erreur, le message n'a pas été envoyé, veuillez réessayer.",
+          },
+          toastOptions,
+        );
+        email_promise.then(() => {
+          emailSent.current += 1;
+        });
+      } else {
+        toast.info('Veuillez remplir toutes les entrées...', toastOptions);
+      }
+    } else {
+      //Case where he sent too many emails, above the limit
+      toast.error(
+        'Vous avez envoyé trop de messages, vous avez atteint votre limite, vous ne pouvez plus en envoyer.',
         toastOptions,
       );
-      email_promise.then(()=>{   
-        emailSent.current+=1
-      })
-  }
-  else
-  {
-    toast.info("Veuillez remplir toutes les entrées...",
-      toastOptions
-    );
-  }
-}else
-{
-  //Case where he sent too many emails, above the limit
-    toast.error("Vous avez envoyé trop de messages, vous avez atteint votre limite, vous ne pouvez plus en envoyer.",
-      toastOptions
-    );
-  
-}
-
-},500) 
-
+    }
+  }, 500);
 
   return (
     <div className="w-full text-center">
@@ -152,7 +160,7 @@ const sendEmail =debounce(() => {
         >
           <TextField
             id="name"
-            label={"Votre nom"}
+            label={'Votre nom'}
             placeholder={"S'il vous plaît entrez votre nom"}
             variant="outlined"
             margin="normal"
@@ -171,13 +179,12 @@ const sendEmail =debounce(() => {
         >
           <TextField
             id="email"
-            label={"Email du contact"}
-            placeholder={"votre@emailid.com"}
+            label={'Email du contact'}
+            placeholder={'votre@emailid.com'}
             variant="outlined"
             margin="normal"
             fullWidth
             inputRef={emailRef}
-
           />
         </Grid>
 
@@ -192,7 +199,7 @@ const sendEmail =debounce(() => {
           <TextField
             id="companyName"
             label={"Nom de l'entreprise"}
-            placeholder={"Entrez le nom de votre entreprise"}
+            placeholder={'Entrez le nom de votre entreprise'}
             variant="outlined"
             margin="normal"
             inputRef={companyNameRef}
@@ -220,7 +227,7 @@ const sendEmail =debounce(() => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={"Pays"}
+                label={'Pays'}
                 variant="outlined"
                 placeholder="Choisissez le pays ..."
               />
@@ -232,15 +239,14 @@ const sendEmail =debounce(() => {
         <Grid item xs={12}>
           <TextField
             id="message"
-            label={"Votre message"}
-            placeholder={"Tapez votre message…."}
+            label={'Votre message'}
+            placeholder={'Tapez votre message….'}
             variant="outlined"
             margin="normal"
             rows={5}
             className="mt-4"
             multiline
             inputRef={messageRef}
-
             fullWidth
           />
         </Grid>

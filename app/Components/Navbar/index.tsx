@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome,faShoppingCart,faCircleInfo,faPhone, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import Logo from "@/public/Images/logo/Logo.webp"
+import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faShoppingCart,
+  faCircleInfo,
+  faPhone,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
+import Logo from '@/public/Images/logo/Logo.webp';
 import {
   Box,
   CssBaseline,
@@ -11,20 +17,20 @@ import {
   ListItemButton,
   ListItemText,
   Typography,
-} from "@mui/material";
-import { useRouter } from "next/router";
-import { DesktopNavbar } from "./methods";
-import { DesktopNavbarProps, NavbarProps } from "./types";
-import styles from "./style.module.css";
-import Image from "next/image";
-import Link from "next/link";
+} from '@mui/material';
+import { useRouter } from 'next/router';
+import { DesktopNavbar } from './methods';
+import { DesktopNavbarProps, NavbarProps } from './types';
+import styles from './style.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
 const drawerWidth = 240;
 
 const navItems = [
-  { name: "Présentation", link: "/", icon:faHome },
-  { name: "Nos Produits", link: "/products", icon:faShoppingCart },
-  { name: "À Propos", link: "/about", icon:faCircleInfo },
-  { name: "Contact", link: "/contact", icon:faPhone },
+  { name: 'Présentation', link: '/', icon: faHome },
+  { name: 'Nos Produits', link: '/products', icon: faShoppingCart },
+  { name: 'À Propos', link: '/about', icon: faCircleInfo },
+  { name: 'Contact', link: '/contact', icon: faPhone },
 ];
 
 //This is the Mobile Side Navbar
@@ -35,20 +41,35 @@ const MobileNavbar = ({
   mobileOpen,
 }: DesktopNavbarProps) => {
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <div className="flex justify-center items-center flex-col">
-      <Image className="" height={100} src={Logo} alt={"Ben Amar Menuiserie Aluminium"} />
+        <Image
+          className=""
+          height={100}
+          src={Logo}
+          alt={'Ben Amar Menuiserie Aluminium'}
+        />
       </div>
       <Divider />
-      
+
       <List>
         {navItems.map((item, index) => (
           <ListItemButton
-            key={"SUBNAVITEM"+index}
-            sx={{ textAlign: "center" }}
+            key={'SUBNAVITEM' + index}
+            sx={{ textAlign: 'center' }}
           >
             <FontAwesomeIcon className="mt-0 mb-0" icon={item.icon} />
-            <ListItemText primary={<Link key={index} className=" text-[#000000] no-underline block" href={item.link}>{item.name}</Link>} />
+            <ListItemText
+              primary={
+                <Link
+                  key={index}
+                  className=" text-[#000000] no-underline block"
+                  href={item.link}
+                >
+                  {item.name}
+                </Link>
+              }
+            />
           </ListItemButton>
         ))}
       </List>
@@ -66,7 +87,7 @@ const MobileNavbar = ({
         }}
         className={styles.menuButton}
         sx={{
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
         }}
       >
         {drawer}
@@ -75,9 +96,7 @@ const MobileNavbar = ({
   );
 };
 
-function Navbar({
-  bgWhite
-}: NavbarProps) {
+function Navbar({ bgWhite }: NavbarProps) {
   const router = useRouter();
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -90,7 +109,7 @@ function Navbar({
     // The debounce function receives our function as a parameter
     const debounce = (
       // @ts-ignore
-      fn
+      fn,
     ) => {
       // This holds the requestAnimationFrame reference, so we can cancel it if we wish
       // @ts-ignore
@@ -121,7 +140,7 @@ function Navbar({
     };
 
     // Listen for new scroll events, here we debounce our `storeScroll` function
-    document.addEventListener("scroll", debounce(storeScroll), {
+    document.addEventListener('scroll', debounce(storeScroll), {
       passive: true,
     });
 

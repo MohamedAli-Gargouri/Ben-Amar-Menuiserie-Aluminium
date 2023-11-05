@@ -4,29 +4,44 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import img from "@/public/Images/About/Mission.jpg"
+import img from '@/public/Images/About/Mission.jpg';
 interface EmployeeCardProps {
   firstName: string;
   lastName: string;
   position: string;
   imgUrl: string;
 }
-export default function EmployeeCard({firstName,lastName,position,imgUrl}:EmployeeCardProps) {
+export default function EmployeeCard({
+  firstName,
+  lastName,
+  position,
+  imgUrl,
+}: EmployeeCardProps) {
   return (
-    <Card className='w-full shadow-lg max-w-[20rem]'>
+    <Card className="w-full shadow-lg max-w-[20rem]">
       <CardActionArea>
         <CardMedia
           component="img"
           src={imgUrl}
           height={390}
-          alt={firstName+" "+lastName}
+          alt={firstName + ' ' + lastName}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" className=' text-center' component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            className=" text-center"
+            component="div"
+          >
             {position}
           </Typography>
-          <Typography gutterBottom variant="body2" className=' text-center' component="div">
-          {firstName} {lastName}
+          <Typography
+            gutterBottom
+            variant="body2"
+            className=" text-center"
+            component="div"
+          >
+            {firstName} {lastName}
           </Typography>
           {/*<Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
