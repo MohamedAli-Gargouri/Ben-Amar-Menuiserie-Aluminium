@@ -1,5 +1,8 @@
+<p align="center">
+  
+  ![Ben-Amar-Menuiserie-Aluminium](https://imgur.com/cTcHJQ1.png)
+</p>
 
-![Ben-Amar-Menuiserie-Aluminium](https://imgur.com/tHOOqw1.png)
 ## Introduction
 This project involves the creation of a website for Ben Amar Menuiserie Aluminium. It includes several key sections:
 
@@ -7,8 +10,33 @@ This project involves the creation of a website for Ben Amar Menuiserie Aluminiu
 2. A contact page where users can send messages to the company and find its location.
 3. A products page displaying the company's product offerings.
 4. An about page that offers information about the company and introduces its team.
-## Demo
-[Video Link](https://imgur.com/gallery/7vWJyVJ)
+## Picture & Video
+<details>
+<summary>Presentation</summary>
+
+![Presentation image 1](https://imgur.com/8kpnKE3.png)
+![Presentation image 2](https://imgur.com/9U7ebam.png)
+![Presentation image 3](https://imgur.com/DPRCUDY.png)
+![Presentation image 4](https://imgur.com/wGQiBma.png)
+</details>
+
+<details>
+<summary>Products</summary>
+  
+![products image 1](https://imgur.com/XPbMBSY.png)
+
+</details>
+
+<details>
+<summary>Contact</summary>
+  
+![contact image 1](https://imgur.com/TvHduHT.png)
+![contact image 2](https://imgur.com/ka3YEDV.png)
+
+</details>
+
+https://github.com/DALI-1/Ben-Amar-Menuiserie-Aluminium/assets/99611104/d0663880-1f65-4272-8aca-466b47bd5fab
+
 ## Tools
 This project was developed using the Next.js framework in TypeScript and leveraged the styling capabilities of Tailwind CSS in combination with the Material UI components.
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
