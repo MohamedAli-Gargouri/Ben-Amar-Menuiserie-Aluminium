@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 
 import styles from './style.module.css';
 import Certificate from '@/public/Images/Home/Banner/Certification.webp';
+import TPRCertificate from '@/public/Images/Home/Banner/TPR.webp';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -46,15 +47,25 @@ const LeftContainerHB = () => {
           métier
         </h3>
       </div>
-      <div className="hidden md:flex w-full h-full  justify-center items-center">
-        <Image
-          width={300}
-          height={300}
+      <div className=' flex flex-row justify-center gap-2 flex-wrap items-center w-full'>
+      <Image
+          width={150}
+          height={150}
+          className=" p-3 aspect-square"
+          src={TPRCertificate}
+          alt={'TPR Certification'}
+        />
+      <Image
+          width={150}
+          height={150}
           className=" aspect-square"
           src={Certificate}
           alt={'SCHUCO Certification'}
         />
+
+        
       </div>
+      
     </motion.div>
   );
 };

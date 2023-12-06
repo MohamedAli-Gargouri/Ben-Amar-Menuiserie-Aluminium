@@ -167,38 +167,96 @@ export const productsList = [
       },
     ],
   },
-
   {
     background: false,
     direction: 'left',
-    title: 'Facade Alucobond',
-    image: '/Images/Products/7.webp',
+    title: 'Mur rideau',
+    image: '/Images/Products/9.webp',
     descriptionList: [
       {
         id: 1,
         title:
-          "Vous pouvez choisir parmi une vaste gamme de couleurs et de finitions pour personnaliser l'apparence de votre façade.",
+          "Les murs rideaux offrent des capacités d'insonorisation, minimisant ainsi les bruits extérieurs.",
       },
       {
         id: 2,
         title:
           'Résistants à la corrosion et aux intempéries, garantissant une longue durée de vie.',
       },
+    ],
+  },
+  {
+    background: true,
+    direction: 'right',
+    title: 'Pergola aluminium',
+    image: '/Images/Products/10.webp',
+    descriptionList: [
+      {
+        id: 1,
+        title:
+          "Fournissent une ombre agréable, protégeant des rayons directs du soleil et permettant de profiter de l'extérieur par temps ensoleillé.",
+      },
+      {
+        id: 2,
+        title:
+          'Construites avec des matériaux robustes, résistant aux intempéries, garantissant une durabilité à long terme.',
+      },
       {
         id: 3,
         title:
-          "Ils nécessitent peu d'entretien, se limitant généralement au nettoyage périodique.",
+          'Elles offrent un espace convivial pour se détendre en plein air, organiser des repas en famille ou entre amis, ou créer un coin lecture paisible.',
+      },
+    ],
+  },
+  {
+    background: true,
+    direction: 'left',
+    title: 'Garde Corps Aluminium',
+    image: '/Images/Products/14.webp',
+    descriptionList: [
+      {
+        id: 1,
+        title:
+          "Les garde-corps en aluminium sont très durables et résistants à la corrosion, ce qui les rend adaptés aux environnements extérieurs.",
       },
       {
-        id: 4,
+        id: 2,
         title:
-          "Peuvent être courbés, pliés ou découpés pour s'adapter à diverses conceptions architecturales.",
+          'Ils nécessitent peu d entretien en raison de leur résistance à la rouille et à la corrosion, ce qui réduit les coûts de maintenance.',
+      },
+      {
+        id: 3,
+        title:
+          'Les garde-corps en aluminium peuvent être conçus pour être esthétiquement plaisants, offrant un aspect moderne et élégant qui complète différents styles architecturaux.',
+      },
+    ],
+  },
+  {
+    background: true,
+    direction: 'right',
+    title: 'Porte Garage Aluminium',
+    image: '/Images/Products/15.webp',
+    descriptionList: [
+      {
+        id: 1,
+        title:
+          "Les garages en aluminium sont légers, ce qui facilite leur transport et leur installation par rapport à d'autres matériaux plus lourds comme l'acier.",
+      },
+      {
+        id: 2,
+        title:
+          'Le garage en aluminium peut être conçu pour différentes utilisations, telles que le stockage d outils, de véhicules ou d autres biens',
+      },
+      {
+        id: 3,
+        title:
+          'Il peut être personnalisé avec des fonctionnalités supplémentaires telles que des portes, des fenêtres et des options de toiture pour répondre aux besoins spécifiques.',
       },
     ],
   },
   {
     background: false,
-    direction: 'right',
+    direction: 'left',
     title: 'Cabine Douche',
     image: '/Images/Products/8.webp',
     descriptionList: [
@@ -225,52 +283,11 @@ export const productsList = [
     ],
   },
 
-  {
-    background: false,
-    direction: 'left',
-    title: 'Mur rideau',
-    image: '/Images/Products/9.webp',
-    descriptionList: [
-      {
-        id: 1,
-        title:
-          "Les murs rideaux offrent des capacités d'insonorisation, minimisant ainsi les bruits extérieurs.",
-      },
-      {
-        id: 2,
-        title:
-          'Résistants à la corrosion et aux intempéries, garantissant une longue durée de vie.',
-      },
-    ],
-  },
+
 
   {
-    background: true,
+    background: false,
     direction: 'right',
-    title: 'Pergola aluminium',
-    image: '/Images/Products/10.webp',
-    descriptionList: [
-      {
-        id: 1,
-        title:
-          "Fournissent une ombre agréable, protégeant des rayons directs du soleil et permettant de profiter de l'extérieur par temps ensoleillé.",
-      },
-      {
-        id: 2,
-        title:
-          'Construites avec des matériaux robustes, résistant aux intempéries, garantissant une durabilité à long terme.',
-      },
-      {
-        id: 3,
-        title:
-          'Elles offrent un espace convivial pour se détendre en plein air, organiser des repas en famille ou entre amis, ou créer un coin lecture paisible.',
-      },
-    ],
-  },
-
-  {
-    background: false,
-    direction: 'left',
     title: 'Tables aluminium',
     image: '/Images/Products/11.webp',
     descriptionList: [
@@ -298,7 +315,7 @@ export const productsList = [
 
   {
     background: false,
-    direction: 'right',
+    direction: 'left',
     title: 'Chaises aluminium',
     image: '/Images/Products/12.webp',
     descriptionList: [
@@ -327,7 +344,7 @@ export const productsList = [
 
   {
     background: false,
-    direction: 'left',
+    direction: 'right',
     title: 'Canapé aluminium',
     image: '/Images/Products/13.webp',
     descriptionList: [

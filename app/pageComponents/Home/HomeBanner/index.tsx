@@ -17,15 +17,6 @@ const HomeBanner = () => {
           <RightContainerHB />
         </Grid>
       </Grid>
-      <div className=" md:hidden w-full h-full flex justify-center items-center">
-        <Image
-          width={300}
-          height={300}
-          className=" aspect-square"
-          src={Certificate}
-          alt={'SCHUCO Certification'}
-        />
-      </div>
     </div>
   );
 };

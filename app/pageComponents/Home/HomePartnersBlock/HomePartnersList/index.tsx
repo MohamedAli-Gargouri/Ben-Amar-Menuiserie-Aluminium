@@ -23,23 +23,7 @@ const HomeProductsList = () => {
     triggerOnce: true,
   });
 
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
 
-  const openImageViewer = useCallback((index:number) => {
-    setCurrentImage(index);
-    setIsViewerOpen(true);
-  }, []);
-
-  const closeImageViewer = () => {
-    setCurrentImage(0);
-    setIsViewerOpen(false);
-  };
-
-  const images:string[]=[]
-  imageList.map((item: imageListType, index: number)=>{
-    images.push(item.imageUrl)
-  })
   return (
     <div
       className={`w-full flex flex-col justify-center items-center text-[aliceblue] pr-[3rem] pl-[3rem]  lg:pr-[6rem] lg:pl-[6rem] ${styles.container}`}
@@ -59,33 +43,19 @@ const HomeProductsList = () => {
               custom={index}
             >
               <Image
-                onClick={ () => openImageViewer(index) }
                 key={index}
                 src={item.imageUrl}
                 alt={item.title}
-                className={` rounded-lg hover:scale-105 col-span-1 ${styles.image}`}
+                className={` rounded-lg p-1 col-span-1 ${styles.image}`}
                 title={item.title}
-                width={200}
-                height={200}
+                width={150}
+                height={150}
               />
             </motion.div>
           ))}
         </div>
-        {isViewerOpen && (
-          <div className='relative' style={{ zIndex:"200"}}>
-        <ImageViewer
-          src={ images }
-          
-          currentIndex={ currentImage }
-          disableScroll={ true }
-          closeOnClickOutside={ true }
-          backgroundStyle={{
-            backgroundColor: "rgba(0,0,0,0.9)"
-          }}
-          onClose={ closeImageViewer }
-        /></div>
-      )}
-      
+
+  
       </div>
       
     </div>

@@ -4,6 +4,7 @@ import Navbar from "@/app/Components/Navbar";
 import HomeBanner from "@/app/pageComponents/Home/HomeBanner";
 import HomeServicesBlock from "@/app/pageComponents/Home/HomeServicesBlock";
 import HomeProjectsBlock from "@/app/pageComponents/Home/HomeProjectsBlock";
+import HomePartnersBlock from "@/app/pageComponents/Home/HomePartnersBlock"
 import Footer from "@/app/Components/Footer";
 import Head from "next/head";
 
@@ -14,7 +15,7 @@ const Home = () => {
         <title>Presentation | Ben Amar Menuiserie Aluminium</title>
         <meta
           name="description"
-          content="AlumTec, Glazing solutions are our passion"
+          content="Ben Amar Menuiserie Aluminium"
         />
         <meta
           name="keywords"
@@ -29,6 +30,7 @@ const Home = () => {
       <section>
         <HomeBanner />
         <HomeServicesBlock />
+        <HomePartnersBlock/>
         <HomeProjectsBlock />
       </section>
         <Footer />
