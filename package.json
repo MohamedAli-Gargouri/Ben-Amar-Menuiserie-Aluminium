@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev && eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
+  
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

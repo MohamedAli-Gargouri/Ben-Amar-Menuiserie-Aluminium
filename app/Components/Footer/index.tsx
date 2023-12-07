@@ -77,7 +77,7 @@ export const Footer: FC = (): ReactElement => {
             {[
               {
                 name: 'FB',
-                url: 'https://www.facebook.com/p/Menuiserie-Aluminium-Ben-Amar-100064915872562/',
+                url: 'https://www.facebook.com/people/OPEN-CLOSE/61552007813502/',
                 icon: (
                   <FacebookSharpIcon
                     sx={{ color: '#4267B2', fontSize: '35px' }}
