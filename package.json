@@ -1,11 +1,11 @@
 {
   "name": "ben-amar-menuiserie-aluminium",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev && eslint . --ext .js,.jsx,.ts,.tsx",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "lint": "next lint"
   },
   
