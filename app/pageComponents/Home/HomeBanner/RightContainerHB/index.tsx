@@ -1,41 +1,42 @@
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
-import { getNextImageIndex } from "../methods";
-import { sliderImages } from "../data";
+import { getNextImageIndex } from '../methods';
+import { sliderImages } from '../data';
 
-import styles from "./style.module.css";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import styles from './style.module.css';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Animations = {
-    hidden: {
-      opacity: 0,
-      y: 0,
-      x: 200,
-      scale: 0.5,
+  hidden: {
+    opacity: 0,
+    y: 0,
+    x: 200,
+    scale: 0.5,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-  function generateRandomString(length:number) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let randomString = '';
-  
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      randomString += characters.charAt(randomIndex);
-    }
-  
-    return randomString;
+  },
+};
+function generateRandomString(length: number) {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomString += characters.charAt(randomIndex);
   }
+
+  return randomString;
+}
 const RightContainerHB = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -68,10 +69,11 @@ const RightContainerHB = () => {
 
   return (
     <motion.div
-    ref={ref}
-    variants={Animations}
-    animate={inView ? "visible" : "hidden"}
-     className={styles.rightContainer}>
+      ref={ref}
+      variants={Animations}
+      animate={inView ? 'visible' : 'hidden'}
+      className={styles.rightContainer}
+    >
       <div className={styles.spaceUpPattern} />
       <div className={styles.sliderOuterContainer}>
         <div className={styles.box}>
@@ -84,7 +86,10 @@ const RightContainerHB = () => {
             loading="eager"
             title="Ben Amar Menuiserie Aluminium"
           />
-          <div className={styles.frameImageMobile} title="Ben Amar Menuiserie Aluminium" />
+          <div
+            className={styles.frameImageMobile}
+            title="Ben Amar Menuiserie Aluminium"
+          />
         </div>
         <div className={`${styles.box} ${styles.overlay}`}>
           <div className={styles.sliderOuterContainer}>

@@ -2,31 +2,9 @@
 .image {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
    border: 1px solid #558B2F; 
-   border-radius: 30px;
+   width: 100% !important;
+   
 }
 
-@media all and (max-width: 650px) {
-  .image {
-    width: 100%;
-    height: 200px;
-    border-radius: 30px;
-    border: 1px solid #558B2F; 
-  }
-}
 
-@media all and (max-width: 500px) {
-  .container {
-    margin-top: 0px;
-  }
-
-}
-
-@media all and (max-width: 440px) {
-  .image {
-    width: 100%;
-    border-radius: 0px;
-    border: 1px solid #558B2F;
-    
-  }
-}
 

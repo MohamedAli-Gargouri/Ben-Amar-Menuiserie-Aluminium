@@ -1,17 +1,17 @@
-import CallIcon from "@mui/icons-material/Call";
-import MenuIcon from "@mui/icons-material/Menu";
-import Image from "next/image";
-import Router from "next/router";
-import Logo from "@/public/Images/logo/Logo.webp"
+import CallIcon from '@mui/icons-material/Call';
+import MenuIcon from '@mui/icons-material/Menu';
+import Image from 'next/image';
+import Router from 'next/router';
+import Logo from '@/public/Images/logo/Logo.webp';
 import {
   DesktopNavbarProps,
   NavItemContainerProps,
   NavbarProps,
-} from "./types";
+} from './types';
 
-import { AppBar, IconButton, Link, Toolbar } from "@mui/material";
+import { AppBar, IconButton, Link, Toolbar } from '@mui/material';
 
-import styles from "./style.module.css";
+import styles from './style.module.css';
 
 export const menuClick = (link: any) => {
   Router.push(link).then(() => window.scrollTo(0, 0));
@@ -22,17 +22,18 @@ export const NavItemContainer = ({
   router,
 }: NavItemContainerProps) => {
   return (
-    <div className={`${styles.navItemContainer} flex w-full justify-end items-center`}>
+    <div
+      className={`${styles.navItemContainer} flex w-full justify-end items-center`}
+    >
       {navItems.map((item, index) => (
         <Link
-          key={"NAVITEM"+index}
+          key={'NAVITEM' + index}
           className={`${styles.navItem} no-underline hover:no-underline`}
           onClick={() => menuClick(item.link)}
         >
-            <div className="text-lg hover-underline-animation font-lato">
-              {item.name}
-            </div>
-          
+          <div className="text-lg hover-underline-animation font-lato">
+            {item.name}
+          </div>
         </Link>
       ))}
     </div>
@@ -49,16 +50,16 @@ export const DesktopNavbar = ({
     <AppBar
       component="nav"
       position="fixed"
-      className={`${styles.navContainer} ${bgWhite ? styles.bgWhite : ""}`}
+      className={`${styles.navContainer} ${bgWhite ? styles.bgWhite : ''}`}
     >
       <Toolbar className={styles.insideContainer}>
         <div className={styles.logoContainer}>
-          
-          <Image
-          className={styles.logo}
-            src={Logo}
+          <img
+           onClick={()=>{window.location.href="/"}}
+           className=' w-full object-contain  aspect-auto hover:cursor-pointer'
+            src={Logo.src}
             alt="Ben Amar Menuiserie Aluminium"
-            loading="lazy"
+            loading="eager"
             title="SBAA"
           />
         </div>

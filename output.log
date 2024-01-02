@@ -1,0 +1,7 @@
+info  - Loaded env from C:\Users\User\Desktop\Projects\Alum\.env.development
+warn  - The `app` directory is experimental. To enable, add `appDir: true` to your `next.config.js` configuration under `experimental`. See https://nextjs.org/docs/messages/experimental-app-dir-config
+event - compiled client and server successfully in 1144 ms (418 modules)
+wait  - compiling...
+event - compiled successfully in 73 ms (366 modules)
+> Ready on http://196.203.63.37:3000
+^C

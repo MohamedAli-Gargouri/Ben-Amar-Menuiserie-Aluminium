@@ -8,6 +8,7 @@ const nextConfig = {
     EMAILJS_SERVICE_ID: process.env.EMAILJS_SERVICE_ID
   },
   images: {
+    unoptimized: true,
     domains: [],
   },
   experimental: {

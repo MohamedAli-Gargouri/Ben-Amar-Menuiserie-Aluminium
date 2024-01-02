@@ -1,0 +1,32 @@
+.container {
+  height: fit-content;
+  /* margin-bottom: 500px; */
+  width: 100%;
+}
+
+@media all and (max-width: 900px) {
+  .container {
+    margin-top: 60px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .container {
+    padding-top: 40px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .container {
+    height: fit-content;
+    padding-top: 40px;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .container {
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+}

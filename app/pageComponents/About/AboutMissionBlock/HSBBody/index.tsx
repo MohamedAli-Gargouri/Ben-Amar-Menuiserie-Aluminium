@@ -1,7 +1,7 @@
-import HSBBodyLeftSide from "./HSBBodyLeftSide";
-import HSBBodyRightSide from "./HSBBodyRightSide";
+import HSBBodyLeftSide from './HSBBodyLeftSide';
+import HSBBodyRightSide from './HSBBodyRightSide';
 
-import styles from "./style.module.css";
+import styles from './style.module.css';
 
 const HSBBody = () => {
   return (

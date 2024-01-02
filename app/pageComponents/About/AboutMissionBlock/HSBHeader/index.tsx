@@ -1,27 +1,13 @@
-import styles from "./style.module.css";
+import styles from './style.module.css';
 
 const HSBHeader = () => {
-    return (
-        <div className={styles.servicesHeadingContainer}>
-            <div className={styles.sliderOuterContainer}>
-                <div className={styles.box}>
-                    <h2
-                        className={`${styles.servicesHeadingOverlay} font-sharp`}
-                    >
-                        Notre mission
-                    </h2>
-                </div>
-                <div className={
-                    `${styles.box} ${styles.overlay}`
-                }>
-                    <h2
-                        className={`${styles.servicesHeading} font-sharp`}
-                    >
-                        Notre mission
-                    </h2>
-                </div>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className={styles.servicesHeadingContainer}>
+
+          <h2 className={`${styles.servicesHeading} font-sharp`}>
+            Notre mission
+          </h2>
+    </div>
+  );
+};
 export default HSBHeader;

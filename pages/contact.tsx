@@ -17,7 +17,8 @@ const ContactUsPage = () => {
         />
         <meta
           name="keywords"
-          content="Ben Amar Menuiserie Aluminium,Fenêtres aluminium,Portes aluminium,Portes et fenêtres Coulissante,Portes et fenêtres Battante,Volet Roulant,Facade Vitré,Facade Alucobond,Cabine Douche,Mur rideau,Pergola aluminium,Tables aluminium,Chaises aluminium,Canapé aluminium"
+          content="Ben Amar Menuiserie Aluminium,aluminiumtunisie,PorteAluminium,PorteTunisienne,DesignTunisien,Aluminium,PorteModerne,ArtisanatTunisien,DécoIntérieure,QualitéTunisienne,PorteDesign,FabricationLocale,StyleModerne,PorteEntrée,InnovationTunisienne,HomeDéco,voletroulant,voletroulantmotorisé,villatunisie,TPR,tpr,tpraluminium,gardecorpsescalier,gardecorpsescalierverre
+          ,cabinededouchealuminium,cabinededouche,cabinededouchesurmesure,CabineDeDoucheTunisie,SalleDeBainTunisienne,VerreSécuritTunisie,ExpérienceDeDouche,InstallationFacileTunisie,OuvertureAbattante,EspaceOptimiséTunisie,ÉléganceTunisienne,ConfortModerneTunisie,InnovationSalleDeBains,SécuritéTunisie,EntretienFacileTunisie,DétenteAssurée,PolyvalenceEspaceTunisie,VerreBrillantTunisie,RobusteEtDurable,DesignContemporainTunisie,SalleDeBainsParfaite,ModernitéTunisie,OasisDeCalme,RésistanceOptimaleTunisie,QualitéTunisienne,SalleDeBainsChic,AccessoiresSalleDeBainsTunisie,portebasculantetunisienne,schücopvc,schüco"
         />
         <meta name="author" content="Mohamed Gargouri" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,12 +30,14 @@ const ContactUsPage = () => {
         className="relative"
         // Yahan par border add karna hai
       >
-        <div className="w-full h-full">
+        <div className="w-full h-full text-center">
 
             <ContactUsBanner />
+            <h3 className=" font-lato uppercase">Nos coordonnées</h3>
               <div className="w-full h-full bg-[url('/images/Contact/curved_lines.jxr')] bg-cover bg-no-repeat bg-center" />
 
                 <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 mt-2">
+                  
                   {contact_data_list.map((item, index) => {
                     return (
                       <div key={"CONTACT"+index} className=" col-span-1 block cursor-pointer overflow-hidden  h-96">
