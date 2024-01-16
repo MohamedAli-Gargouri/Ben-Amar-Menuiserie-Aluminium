@@ -341,7 +341,6 @@ export const productsList = [
       },
     ],
   },
-
   {
     background: false,
     direction: 'right',
